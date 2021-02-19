@@ -30,6 +30,11 @@
             <p> Начал работу: </p>
             <div id='timeStart'></div>
             <p > </p>
+
+            <div style='color: green; font-size:40'>
+            <p class="h2" id="timer" style='color: rgb(18, 74, 18); text-align: center'>Таймер</p>
+            </div>
+            <p > </p>
             <div class="input-group input-group-lg">
                 <span class="input-group-text" id="inputGroup-sizing-lg">Введи ID</span>
                 <input id = 'contentID' type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" value = '01HZ18022021' disabled>
@@ -41,11 +46,8 @@
                 <input id = 'contentTitle' type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" value = "Поле чудес" disabled>
             </div>
 
-            <p>
-                 </p>
-            <p> 
-
-            </p>
+            <p></p>
+            <p></p>
             
               
               <div class="form-check form-switch">
@@ -53,27 +55,17 @@
                 <label class="form-check-label" for="flexSwitchCheckDefault">Полный отсмотр</label>
               </div>
 
-              <p> 
-
-              </p>
-              <p> 
-
-              </p>
-
-
-
-
-
-
+              <p> </p>
+              <p> </p>
 
             <p></p>
             <div class="input-group mb-3">
                 <div class="input-group-text">
                     <input id='checkBrak' class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">Брак:
                 </div>
-                    <input id='tBrak' type="text" class="form-control" aria-label="Text input with checkbox" value='везде искажения' disabled>НС, НР, ИТ, НИ
+                    <input id='tBrak' type="text" class="form-control" aria-label="Text input with checkbox" value='везде искажения' disabled>
                 </div>
-              <p></p>
+              <p>например: НС - несинхрон, НР, ИТ, НИ</p>
               <!-- <div id="chBr" class="conteiner-fluid" >
                 
               <div class="form-check form-check-inline">
@@ -103,16 +95,12 @@
 
               <p></p>
               <p>Нажми когда закончил работу:</p>
-            <button id='stop' type="button" class="btn btn-primary btn-lg" disabled>Жми Stop</button>
+              <p style='color:red' >Двойной клик!</p>
+              <p style='color:rgb(255, 123, 0)'>Дождитесь уведомления о статусе!</p>
+            <button id='stop' type="button" class="btn btn-primary btn-lg" disabled>ДВА раза жми Stop</button>
             <p>Закончил работу:</p>
             <div id='timeStop'></div>
             <p></p>
-
-            
-
-
-
-
 
 
         </div>

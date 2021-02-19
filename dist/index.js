@@ -25,6 +25,12 @@ let Title
 let Brak = ''
 let Commit = ''
 let Full =''
+let time = 0
+let min = 0
+let hour = 0
+let st = true
+let delay = 1000
+let myTimer
 
 
 let changeN = document.querySelector('#sname')
@@ -37,6 +43,41 @@ changeN.addEventListener('change', function() {
 
 let clickStart = document.querySelector('#start')
 clickStart.addEventListener('click', function() { 
+    //st = true
+    
+
+
+    
+    clearInterval(myTimer)
+    time = 0
+    min = 0
+    hour = 0
+    timer = document.getElementById('timer')
+    myTimer = setInterval(function () {
+     
+        time = time + 1
+        if (min >= 60) {
+            time = 0
+            min = 0
+            hour = hour +1
+            
+        }
+        if (time >= 60) {
+            time = 0
+            min = min + 1
+        }
+       
+        // if (st) {
+        //     ///clearTimeout(request, delay)
+        // } else{
+        //     clearInterval(delay)
+        // }
+        timer.textContent = `${hour}:${min}:${time}`
+        //insertAdjacentHTML('beforeend', time) 
+        
+    }, delay);
+
+
     document.getElementById('contentID').value = ''
     document.getElementById('contentTitle').value = ''
     document.getElementById('tBrak').value = ''
@@ -65,8 +106,21 @@ clickStart.addEventListener('click', function() {
 
 })
 
+
+
+
 let clickStop = document.querySelector('#stop')
-clickStop.addEventListener('click', function() { 
+
+
+
+clickStop.addEventListener('dblclick', function() { 
+    clearInterval(myTimer)
+    document.getElementById('timer').textContent = "Таймер"
+    time=0
+    min=0
+    hour=0
+
+
     sname = document.querySelector('#sname').value
     ID = document.querySelector('#contentID').value
     Title = document.querySelector('#contentTitle').value
@@ -161,9 +215,10 @@ clickStop.addEventListener('click', function() {
         Full: Full
     })
     .then((docRef) => {
-        console.log("Document written with ID: ", docRef.id);
+        alert(`Все хорошо!!!\nDocument written with ID: \n${docRef.id}`);
     })
     .catch((error) => {
+        alert(`ничего не получилось...\n свяжитесь с разработчиком`)
         console.error("Error adding document: ", error);
     });
 
@@ -176,6 +231,11 @@ clickStop.addEventListener('click', function() {
 
 })
 
+
+// clickStop.addEventListener('click', function() {
+//     alert('Двойной клик!!!')
+//    }
+//    )
 
 // var myModal = document.getElementById('myModal')
 
