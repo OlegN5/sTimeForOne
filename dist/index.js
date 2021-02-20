@@ -322,9 +322,9 @@ console.log("dataNow.getHour", dataNow.getHours())
         smenaStart.setMinutes(0)
     } else if (dataNow.getHours() < 9) { //<9
         //!!!!!!!!!!!!!!!ПРОВЕРИТЬ
-        console.log('не туда')
+        ///console.log('не туда') 
         
-        smenaStart.setDay((dataNow.getDay())-1)
+        smenaStart.setDate(dataNow.getDate()-1)
         smenaStart.setHours(21);
         smenaStart.setMinutes(0)
     }
