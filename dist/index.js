@@ -77,7 +77,14 @@ changeN.addEventListener('change', function() {
 let clickStart = document.querySelector('#start')
 clickStart.addEventListener('click', function() { 
     //st = true
+    console.log('start')
+    timeStart = new Date()
+    sessionStorage.setItem('timeStart', new Date())
+    console.log('localStorage.getItem',sessionStorage.getItem('timeStart'))
     
+    ///console.log('timeStart: ', timeStart);
+    //let time = 0
+    document.getElementById('timeStart').textContent = sessionStorage.getItem('timeStart')    
 
 
     
@@ -87,7 +94,14 @@ clickStart.addEventListener('click', function() {
     hour = 0
     timer = document.getElementById('timer')
     myTimer = setInterval(function () {
-     
+    
+       
+        timerN = new Date() - new Date(sessionStorage.getItem('timeStart'))
+        ddate = new Date(0);
+        ddate.setSeconds(timerN/1000);
+        let timerNN = ddate.toISOString().substr(11, 8);
+
+
         time = time + 1
         if (min >= 60) {
             time = 0
@@ -100,13 +114,9 @@ clickStart.addEventListener('click', function() {
             min = min + 1
         }
        
-        // if (st) {
-        //     ///clearTimeout(request, delay)
-        // } else{
-        //     clearInterval(delay)
-        // }
-        timer.textContent = `${hour}:${min}:${time}`
-        //insertAdjacentHTML('beforeend', time) 
+      
+        //timer.textContent = `Активность ${hour}:${min}:${time}\nРабота ${timerNN}`
+       timer.textContent = `${timerNN}`
         
     }, delay);
 
@@ -131,14 +141,7 @@ clickStart.addEventListener('click', function() {
     document.getElementById('swFull').disabled = false
 
     //document.querySelector('#')
-    console.log('start')
-    timeStart = new Date()
-    sessionStorage.setItem('timeStart', new Date())
-    console.log('localStorage.getItem',sessionStorage.getItem('timeStart'))
     
-    ///console.log('timeStart: ', timeStart);
-    //let time = 0
-    document.getElementById('timeStart').textContent = sessionStorage.getItem('timeStart')
 
 })
 // let checkbox = document.querySelector('#checkDelete');
