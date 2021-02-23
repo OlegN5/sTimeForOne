@@ -315,7 +315,7 @@ let clickStatistic = document.querySelector('#statButton')
 clickStatistic.addEventListener('click', function() { 
     
   
-    
+  
     let dataNow = new Date();
     let smenaStart = new Date();
     durOl = 0 
