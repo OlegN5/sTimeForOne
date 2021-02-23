@@ -133,12 +133,12 @@ clickStart.addEventListener('click', function() {
     //document.querySelector('#')
     console.log('start')
     timeStart = new Date()
-    localStorage.setItem('timeStart', new Date())
-    console.log('localStorage.getItem',localStorage.getItem('timeStart'))
+    sessionStorage.setItem('timeStart', new Date())
+    console.log('localStorage.getItem',sessionStorage.getItem('timeStart'))
     
     ///console.log('timeStart: ', timeStart);
     //let time = 0
-    document.getElementById('timeStart').textContent = localStorage.getItem('timeStart')
+    document.getElementById('timeStart').textContent = sessionStorage.getItem('timeStart')
 
 })
 // let checkbox = document.querySelector('#checkDelete');
@@ -224,7 +224,7 @@ clickStop.addEventListener('dblclick', function() {
     timeStop = new Date()
     document.getElementById('timeStop').textContent = timeStop
     
-    timeStart = new Date(localStorage.getItem('timeStart'))
+    timeStart = new Date(sessionStorage.getItem('timeStart'))
 
 
 
