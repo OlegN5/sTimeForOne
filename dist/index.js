@@ -25,8 +25,6 @@ const firebaseConfig = {
   var db = firebase.firestore();
 
 
-//   document.
-//   class="form-check-input".disabled
 
 let timeStart = 0
 let timeStop = 0
@@ -49,6 +47,22 @@ durKo = 0
 durSa = 0 
 durMa = 0 
 
+
+
+sname = document.querySelector('#sname').value
+
+
+if (sname === 'Кто сегодня звукорежиссер?') {
+    document.getElementById('start').disabled = true
+    document.getElementById('postfactum').disabled = true
+    document.getElementById('contentID').disabled = true
+    document.getElementById('contentTitle').disabled = true
+    document.getElementById('swFull').disabled = true
+    document.getElementById('tBrak').disabled = true
+    document.getElementById('commit').disabled = true
+    document.getElementById('stop').disabled = true
+    document.getElementById('statButton').disabled = true
+}
 
 let changeN = document.querySelector('#sname')
 changeN.addEventListener('change', function() {
@@ -132,9 +146,10 @@ clickStart.addEventListener('click', function() {
     //document.querySelector('#')
     console.log('start')
     timeStart = new Date()
+    localStorage.setItem('timeStart', timeStart)
     ///console.log('timeStart: ', timeStart);
     //let time = 0
-    document.getElementById('timeStart').textContent = timeStart
+    document.getElementById('timeStart').textContent = localStorage.getItem('timeStart')
 
 })
 // let checkbox = document.querySelector('#checkDelete');
@@ -234,7 +249,7 @@ clickStop.addEventListener('dblclick', function() {
     timeStop = new Date()
     document.getElementById('timeStop').textContent = timeStop
     
-    console.log('timeStart: ', timeStart)
+    console.log('timeStart: ', localStorage.getItem('timeStart'))
     console.log('timeStop: ', timeStop);
     console.log('Звукорежиссер: ', myName)
     console.log('ID: ', ID)
@@ -278,7 +293,7 @@ clickStop.addEventListener('dblclick', function() {
 
     db.collection("users").add({
         name: myName,
-        timeStart: timeStart,
+        timeStart: localStorage.getItem('timeStart'),
         timeStop: timeStop,
         ID: ID,
         Title: Title,
