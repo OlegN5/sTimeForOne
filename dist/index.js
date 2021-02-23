@@ -23,10 +23,6 @@ let Title
 let Brak = ''
 let Commit = ''
 let Full =''
-let time = 0
-let min = 0
-let hour = 0
-let st = true
 let delay = 1000
 let myTimer
 let durOl = 0 
@@ -76,22 +72,19 @@ changeN.addEventListener('change', function() {
 
 let clickStart = document.querySelector('#start')
 clickStart.addEventListener('click', function() { 
-    //st = true
+    
     console.log('start')
     timeStart = new Date()
     sessionStorage.setItem('timeStart', new Date())
     console.log('localStorage.getItem',sessionStorage.getItem('timeStart'))
     
-    ///console.log('timeStart: ', timeStart);
-    //let time = 0
+    
     document.getElementById('timeStart').textContent = sessionStorage.getItem('timeStart')    
 
 
     
     clearInterval(myTimer)
-    time = 0
-    min = 0
-    hour = 0
+    
     timer = document.getElementById('timer')
     myTimer = setInterval(function () {
     
@@ -101,18 +94,6 @@ clickStart.addEventListener('click', function() {
         ddate.setSeconds(timerN/1000);
         let timerNN = ddate.toISOString().substr(11, 8);
 
-
-        time = time + 1
-        if (min >= 60) {
-            time = 0
-            min = 0
-            hour = hour +1
-            
-        }
-        if (time >= 60) {
-            time = 0
-            min = min + 1
-        }
        
       
         //timer.textContent = `Активность ${hour}:${min}:${time}\nРабота ${timerNN}`
@@ -195,9 +176,7 @@ let clickStop = document.querySelector('#stop')
 clickStop.addEventListener('dblclick', function() { 
     clearInterval(myTimer)
     document.getElementById('timer').textContent = "Таймер"
-    time=0
-    min=0
-    hour=0
+   
 
 
     sname = document.querySelector('#sname').value
@@ -257,22 +236,7 @@ clickStop.addEventListener('dblclick', function() {
     } else {
         myName =''
     }
-    
-    // let work = {
-    //     name: myName,
-    //     timeStart: timeStart,
-    //     timeStop: timeStop,
-    //     ID: ID,
-    //     Title: Title,
-    //     Brak: Brak,
-    //     Commit: Commit,
-    //     Full: Full
-    //   };
-      
-    //   console.log('Json: ', work)
-
-
-    //   let json = JSON.stringify(work)
+   
 
      
 
@@ -322,8 +286,8 @@ console.log("dataNow.getHour", dataNow.getHours())
         smenaStart.setHours(21);
         smenaStart.setMinutes(0)
     } else if (dataNow.getHours() < 9) { //<9
-        //!!!!!!!!!!!!!!!ПРОВЕРИТЬ
-        ///console.log('не туда') 
+        //Ночная смена следующая дата( после 00:00) 
+        
         
         smenaStart.setDate(dataNow.getDate()-1)
         smenaStart.setHours(21);
@@ -404,18 +368,18 @@ console.log('statistic')
 
 
 
-
-db.collection("users").where("name", "==", 'Олег')
-    .get()
-    .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            // doc.data() is never undefined for query doc snapshots
-            //debugger
-            //debugger
-            console.log(doc.id, " => ", doc.data());     
-        });
+//!!! не удалять - можно проверять разные запросы на чтение базы
+// db.collection("users").where("name", "==", 'Олег')
+//     .get()
+//     .then((querySnapshot) => {
+//         querySnapshot.forEach((doc) => {
+//             // doc.data() is never undefined for query doc snapshots
+//             //debugger
+//             //debugger
+//             console.log(doc.id, " => ", doc.data());     
+//         });
     
-    })
-    .catch((error) => {
-        console.log("Error getting documents: ", error);
-    });
+//     })
+//     .catch((error) => {
+//         console.log("Error getting documents: ", error);
+//     });

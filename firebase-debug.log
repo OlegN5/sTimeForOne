@@ -1,0 +1,35 @@
+[debug] [2021-02-23T20:16:10.184Z] ----------------------------------------------------------------------
+[debug] [2021-02-23T20:16:10.186Z] Command:       /usr/local/bin/firebase /Users/Oleg/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase serve
+[debug] [2021-02-23T20:16:10.187Z] CLI Version:   9.4.0
+[debug] [2021-02-23T20:16:10.187Z] Platform:      darwin
+[debug] [2021-02-23T20:16:10.187Z] Node Version:  v12.18.1
+[debug] [2021-02-23T20:16:10.188Z] Time:          Tue Feb 23 2021 23:16:10 GMT+0300 (GMT+03:00)
+[debug] [2021-02-23T20:16:10.188Z] ----------------------------------------------------------------------
+[debug] [2021-02-23T20:16:10.188Z] 
+[debug] [2021-02-23T20:16:10.195Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-02-23T20:16:10.195Z] > authorizing via signed-in user
+[debug] [2021-02-23T20:16:10.196Z] [iam] checking project stimeforone for permissions ["firebase.projects.get"]
+[debug] [2021-02-23T20:16:10.198Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-02-23T20:16:10.198Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-02-23T20:16:10.327Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","date":"Tue, 23 Feb 2021 20:16:10 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-02-23T20:16:10.335Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/stimeforone:testIamPermissions  
+ {"permissions":["firebase.projects.get"]}
+[debug] [2021-02-23T20:16:10.614Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 23 Feb 2021 20:16:10 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=162","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-02-23T20:16:10.615Z] > refreshing access token with scopes: []
+[debug] [2021-02-23T20:16:10.615Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-02-23T20:16:10.712Z] <<< HTTP RESPONSE 200 {"cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","expires":"Mon, 01 Jan 1990 00:00:00 GMT","date":"Tue, 23 Feb 2021 20:16:10 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-02-23T20:16:10.721Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/stimeforone [none]
+[debug] [2021-02-23T20:16:10.908Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/stimeforone 200
+[debug] [2021-02-23T20:16:10.908Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/stimeforone {"projectId":"stimeforone","projectNumber":"302327929792","displayName":"STimeForOne","name":"projects/stimeforone","resources":{"hostingSite":"stimeforone","realtimeDatabaseInstance":"stimeforone-default-rtdb","storageBucket":"stimeforone.appspot.com","locationId":"us-central"},"state":"ACTIVE"}
+[info] 
+[info] === Serving from '/Users/Oleg/sTimeForOne'...
+[info] 
+[debug] [2021-02-23T20:16:10.910Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/stimeforone/webApps/-/config [none]
+[debug] [2021-02-23T20:16:12.015Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/stimeforone/webApps/-/config 200
+[debug] [2021-02-23T20:16:12.016Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/stimeforone/webApps/-/config {"projectId":"stimeforone","databaseURL":"https://stimeforone-default-rtdb.firebaseio.com","storageBucket":"stimeforone.appspot.com","locationId":"us-central","apiKey":"AIzaSyBFtqYG8OVlI4E8VdBEMW9mLCBhfeUHHeI","authDomain":"stimeforone.firebaseapp.com","messagingSenderId":"302327929792"}
+[info] i  hosting: Serving hosting files from: dist {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mdist\u001b[22m"}}
+[info] ✔  hosting: Local server: http://localhost:5000 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://localhost:5000\u001b[22m\u001b[24m"}}
+[info] i  hosting: 127.0.0.1 - - [23/Feb/2021:20:17:40 +0000] "GET / HTTP/1.1" 200 7311 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.2 Safari/605.1.15" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [23/Feb/2021:20:17:40 +0000] \"GET / HTTP/1.1\" 200 7311 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.2 Safari/605.1.15\""}}
+[info] i  hosting: 127.0.0.1 - - [23/Feb/2021:20:17:40 +0000] "GET /index.js HTTP/1.1" 200 11845 "http://localhost:5000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.2 Safari/605.1.15" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [23/Feb/2021:20:17:40 +0000] \"GET /index.js HTTP/1.1\" 200 11845 \"http://localhost:5000/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.2 Safari/605.1.15\""}}
