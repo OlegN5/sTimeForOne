@@ -1,15 +1,3 @@
-//$el = document.querySelector('#editor').textContent
-   
-
-
-
-
-
-
-
-    //console.log(theBigDay)
-
-
 
 const firebaseConfig = {
     apiKey: "AIzaSyBFtqYG8OVlI4E8VdBEMW9mLCBhfeUHHeI",
@@ -26,8 +14,8 @@ const firebaseConfig = {
 
 
 
-let timeStart = 0
-let timeStop = 0
+let timeStart
+let timeStop
 let sname 
 let myName
 let ID
@@ -41,17 +29,15 @@ let hour = 0
 let st = true
 let delay = 1000
 let myTimer
-durOl = 0 
-durSe = 0 
-durKo = 0 
-durSa = 0 
-durMa = 0 
+let durOl = 0 
+let durSe = 0 
+let durKo = 0 
+let durSa = 0 
+let durMa = 0 
 
 
-
+//если з-р не выбран - все заблокировать
 sname = document.querySelector('#sname').value
-
-
 if (sname === 'Кто сегодня звукорежиссер?') {
     document.getElementById('start').disabled = true
     document.getElementById('postfactum').disabled = true
@@ -64,13 +50,16 @@ if (sname === 'Кто сегодня звукорежиссер?') {
     document.getElementById('statButton').disabled = true
 }
 
+
+
+
+
 let changeN = document.querySelector('#sname')
 changeN.addEventListener('change', function() {
     sname = document.querySelector('#sname').value
     document.getElementById('statButton').disabled = false
     document.getElementById('start').disabled = false
     
-    //debugger
     if (sname == 1) {
         myName = 'Олег'
     } else if (sname == 2) {
@@ -82,8 +71,6 @@ changeN.addEventListener('change', function() {
     } else if (sname == 5) {
         myName = 'Сергей'
     }
-
-
 })
 
 
@@ -146,7 +133,9 @@ clickStart.addEventListener('click', function() {
     //document.querySelector('#')
     console.log('start')
     timeStart = new Date()
-    localStorage.setItem('timeStart', timeStart)
+    localStorage.setItem('timeStart', new Date())
+    console.log('localStorage.getItem',localStorage.getItem('timeStart'))
+    
     ///console.log('timeStart: ', timeStart);
     //let time = 0
     document.getElementById('timeStart').textContent = localStorage.getItem('timeStart')
@@ -231,25 +220,19 @@ clickStop.addEventListener('dblclick', function() {
     document.getElementById('start').disabled = false
     document.getElementById('swFull').disabled = true
     
-   
-
-    // if (sname === 1) {
-    //     myName = 'Олег'
-    // } else if (sname === 2) {
-    //     myName = 'Марк'
-    // } else if (sname === 3) {
-    //     myName = 'Саша'
-    // } else if (sname === 4) {
-    //     myName = 'Костя'
-    // } else if (sname === 5) {
-    //     myName = 'Сергей'
-    // }
-
 
     timeStop = new Date()
     document.getElementById('timeStop').textContent = timeStop
     
-    console.log('timeStart: ', localStorage.getItem('timeStart'))
+    timeStart = new Date(localStorage.getItem('timeStart'))
+
+
+
+
+
+
+
+    console.log('timeStart: ', timeStart)
     console.log('timeStop: ', timeStop);
     console.log('Звукорежиссер: ', myName)
     console.log('ID: ', ID)
@@ -293,7 +276,7 @@ clickStop.addEventListener('dblclick', function() {
 
     db.collection("users").add({
         name: myName,
-        timeStart: localStorage.getItem('timeStart'),
+        timeStart: timeStart,
         timeStop: timeStop,
         ID: ID,
         Title: Title,
@@ -343,8 +326,8 @@ console.log("dataNow.getHour", dataNow.getHours())
         smenaStart.setHours(21);
         smenaStart.setMinutes(0)
     }
-console.log("smenaStart", smenaStart)
-//db.collection("test").where("name", "==", myName)
+
+
 db.collection("users").where("timeStart", ">", smenaStart)
     .get()
     .then((querySnapshot) => {
@@ -353,7 +336,7 @@ db.collection("users").where("timeStart", ">", smenaStart)
             //debugger
             
             console.log(doc.id, " => ", doc.data());
-            //console.log(document.)
+            console.log(doc.data())
             my=doc.data()
             tStart=my.timeStart
             tStop=my.timeStop
@@ -417,33 +400,19 @@ console.log('statistic')
 })
 
 
-// clickStop.addEventListener('click', function() {
-//     alert('Двойной клик!!!')
-//    }
-//    )
-
-// var myModal = document.getElementById('myModal')
-
-// myModal.addEventListener('show.bs.modal', function (event) {
-//   if (!data) {
-//     return event.preventDefault() // stops modal from being shown
-//   }
-// })
 
 
-
-
-
-
-
-// let checkbox = document.querySelector('#checkDelete');
-
-// checkbox.addEventListener('change', function() {
-//   if (this.checked) {
-//     console.log("Checkbox is checked..");
-//     $el = $el.replace(new RegExp(`[${charsDelete}]`, "g"), "") 
-//     document.querySelector('#result').textContent = $el
-//   } else {
-//     console.log("Checkbox is not checked..");
-//   }
-// });
+db.collection("users").where("name", "==", 'Олег')
+    .get()
+    .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            //debugger
+            //debugger
+            console.log(doc.id, " => ", doc.data());     
+        });
+    
+    })
+    .catch((error) => {
+        console.log("Error getting documents: ", error);
+    });
