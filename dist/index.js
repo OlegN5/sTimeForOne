@@ -12,10 +12,28 @@ const firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
   var db = firebase.firestore();
 
+  class Timer {
+    constructor () {
+        this.myTimer
+        this.timeToString        
+    } 
+    start(){
+        this.myTimer = setInterval(function () {
+            let countMs = new Date() - new Date(sessionStorage.getItem('timeStart'))
+            let date0 = new Date(0)
+            date0.setSeconds(countMs/1000)
+            this.timeToString = date0.toISOString().substr(11, 8)     
+            document.getElementById('timer').textContent = `Работа ${this.timeToString}`      
+        }
+        , delay)
+    }
+    stop(){
+        clearInterval(this.myTimer)
+        //document.getElementById('timer').textContent = "Таймер"
+    } 
+}
 
 
-let timeStart
-let timeStop
 let sname 
 let myName
 let ID
@@ -24,7 +42,7 @@ let Brak = ''
 let Commit = ''
 let Full =''
 let delay = 1000
-let myTimer
+
 let durOl = 0 
 let durSe = 0 
 let durKo = 0 
@@ -32,30 +50,50 @@ let durSa = 0
 let durMa = 0 
 
 
+
+
+const myTimer = new Timer()
+
+function selectCollectionInBase() {
+    document.URL == 'http://localhost:5000/' ?
+    collection = 'test':
+    collection = 'users'
+
+    console.log(document.URL)
+    console.log('firebase', collection)
+    return collection
+}
+
+function inputFormsDisabled (bool) {
+    document.getElementById('contentID').disabled = bool
+    document.getElementById('contentTitle').disabled = bool
+    document.getElementById('swFull').disabled = bool   
+    document.getElementById('checkBrak').disabled = bool
+    document.getElementById('tBrak').disabled = bool
+    document.getElementById('commit').disabled = bool
+}
+
 //если з-р не выбран - все заблокировать
 sname = document.querySelector('#sname').value
 if (sname === 'Кто сегодня звукорежиссер?') {
     document.getElementById('start').disabled = true
     document.getElementById('postfactum').disabled = true
-    document.getElementById('contentID').disabled = true
-    document.getElementById('contentTitle').disabled = true
-    document.getElementById('swFull').disabled = true
-    document.getElementById('tBrak').disabled = true
-    document.getElementById('commit').disabled = true
+
+    inputFormsDisabled (true)
+
     document.getElementById('stop').disabled = true
     document.getElementById('statButton').disabled = true
 }
 
-
-
-
-
-let changeN = document.querySelector('#sname')
-changeN.addEventListener('change', function() {
-    sname = document.querySelector('#sname').value
+document.querySelector('#sname').addEventListener('change', function() {
     document.getElementById('statButton').disabled = false
     document.getElementById('start').disabled = false
-    
+    myName = readMyName()
+})
+
+function readMyName() {
+    sname = document.getElementById('sname').value
+
     if (sname == 1) {
         myName = 'Олег'
     } else if (sname == 2) {
@@ -67,64 +105,33 @@ changeN.addEventListener('change', function() {
     } else if (sname == 5) {
         myName = 'Сергей'
     }
-})
+    return myName
+}
 
-
-let clickStart = document.querySelector('#start')
-clickStart.addEventListener('click', function() { 
-    
-    console.log('start')
-    timeStart = new Date()
-    sessionStorage.setItem('timeStart', new Date())
-    console.log('localStorage.getItem',sessionStorage.getItem('timeStart'))
-    
-    
-    document.getElementById('timeStart').textContent = sessionStorage.getItem('timeStart')    
-
-
-    
-    clearInterval(myTimer)
-    
-    timer = document.getElementById('timer')
-    myTimer = setInterval(function () {
-    
-       
-        timerN = new Date() - new Date(sessionStorage.getItem('timeStart'))
-        ddate = new Date(0);
-        ddate.setSeconds(timerN/1000);
-        let timerNN = ddate.toISOString().substr(11, 8);
-
-       
-      
-        //timer.textContent = `Активность ${hour}:${min}:${time}\nРабота ${timerNN}`
-       timer.textContent = `${timerNN}`
-        
-    }, delay);
-
-
+function clearForm() {
     document.getElementById('contentID').value = ''
     document.getElementById('contentTitle').value = ''
     document.getElementById('tBrak').value = ''
     document.getElementById('timeStop').textContent = ''
-
-
     document.getElementById('commit').textContent = ''
     document.getElementById('commit').value = ''
-    document.getElementById('swFull').checked = false
+    document.getElementById('swFull').checked = false   
+}
 
-    document.getElementById('sname').disabled = true
-    document.getElementById('contentID').disabled = false
-    document.getElementById('contentTitle').disabled = false
-    document.getElementById('tBrak').disabled = false
-    document.getElementById('commit').disabled = false
+document.querySelector('#start').addEventListener('click', function() {
+    myTimer.start()
+    clearForm()
+
+    sessionStorage.setItem('timeStart', new Date())
+    document.getElementById('timeStart').textContent = sessionStorage.getItem('timeStart')
+
+    inputFormsDisabled (false)
+
     document.getElementById('stop').disabled = false
-    document.getElementById('start').disabled = true
-    document.getElementById('swFull').disabled = false
-
-    //document.querySelector('#')
-    
-
+    document.getElementById('sname').disabled = true
+    document.getElementById('start').disabled = true  
 })
+
 // let checkbox = document.querySelector('#checkDelete');
 
 // checkbox.addEventListener('change', function() {
@@ -171,13 +178,33 @@ clickStart.addEventListener('click', function() {
 //         document.getElementById('tBrak').value += 'перепады, '
 //     }
 //     )
+document.querySelector('#contentID').addEventListener('change', function() {
 
-let clickStop = document.querySelector('#stop')
-clickStop.addEventListener('dblclick', function() { 
-    clearInterval(myTimer)
-    document.getElementById('timer').textContent = "Таймер"
-   
+    console.log(document.querySelector('#contentID').value)
 
+
+    const idTest = document.querySelector('#contentID').value
+    db.collection(selectCollectionInBase()).where("ID", "==", `%0`)//idTest)
+        .get()
+        .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                // doc.data() is never undefined for query doc snapshots
+                my = doc.data()
+
+                let tStart = new Date(0)
+                tStart.setSeconds(my.timeStart.seconds) 
+
+                alert (`АХТУНГ!!! ID:${idTest} есть в базе, смотрел ${my.name}, ${tStart}, брак: ${my.Brak}, комментарии: ${my.Commit}`)
+                console.log(doc.id, " => ", doc.data())
+            });
+        })
+        .catch((error) => {
+            console.log("Error getting documents: ", error);
+        });
+})
+
+document.querySelector('#stop').addEventListener('dblclick', function() { 
+    myTimer.stop()
 
     sname = document.querySelector('#sname').value
     ID = document.querySelector('#contentID').value
@@ -185,34 +212,21 @@ clickStop.addEventListener('dblclick', function() {
     Brak = document.querySelector('#tBrak').value
     Commit = document.querySelector('#commit').value
     
-    
-    if (document.querySelector('#swFull').checked) {
-        Full = true
-
-    } else {
+    document.querySelector('#swFull').checked ?
+        Full = true:
         Full = false
-    }
-
-    document.getElementById('sname').disabled = false
-    document.getElementById('contentID').disabled = true
-    document.getElementById('contentTitle').disabled = true
-    document.getElementById('tBrak').disabled = true
-    document.getElementById('commit').disabled = true
-    document.getElementById('stop').disabled = true
-    document.getElementById('start').disabled = false
-    document.getElementById('swFull').disabled = true
     
 
-    timeStop = new Date()
+    inputFormsDisabled (true)
+
+    document.getElementById('start').disabled = false
+    document.getElementById('sname').disabled = false
+    document.getElementById('stop').disabled = true
+    
+    let timeStop = new Date()
     document.getElementById('timeStop').textContent = timeStop
     
-    timeStart = new Date(sessionStorage.getItem('timeStart'))
-
-
-
-
-
-
+    let timeStart = new Date(sessionStorage.getItem('timeStart'))
 
     console.log('timeStart: ', timeStart)
     console.log('timeStop: ', timeStop);
@@ -222,26 +236,10 @@ clickStop.addEventListener('dblclick', function() {
     console.log('Наличие брака: ', Brak)
     console.log('Комментарии: ', Commit)
     console.log('Полный отсмотр: ', Full)
-   
-    if (sname == 1) {
-        myName = 'Олег'
-    } else if (sname == 2) {
-        myName = 'Марк'
-    } else if (sname == 3) {
-        myName = 'Саша'
-    } else if (sname == 4) {
-        myName = 'Костя'
-    } else if (sname == 5) {
-        myName = 'Сергей'
-    } else {
-        myName =''
-    }
-   
+    
 
-     
-
-
-    db.collection("users").add({
+    
+    db.collection(selectCollectionInBase()).add({
         name: myName,
         timeStart: timeStart,
         timeStop: timeStop,
@@ -295,7 +293,7 @@ console.log("dataNow.getHour", dataNow.getHours())
     }
 
 
-db.collection("users").where("timeStart", ">", smenaStart)
+db.collection(selectCollectionInBase()).where("timeStart", ">", smenaStart)
     .get()
     .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
@@ -361,6 +359,7 @@ document.getElementById('se').textContent = `Серега за смену отр
     .catch((error) => {
         console.log("Error getting documents: ", error);
     });
+
 console.log('statistic')
 
 
