@@ -54,24 +54,7 @@ let durMa = 0
 
 const myTimer = new Timer()
 
-function selectCollectionInBase() {
-    document.URL == 'http://localhost:5000/' ?
-    collection = 'test':
-    collection = 'users'
 
-    console.log(document.URL)
-    console.log('firebase', collection)
-    return collection
-}
-
-function inputFormsDisabled (bool) {
-    document.getElementById('contentID').disabled = bool
-    document.getElementById('contentTitle').disabled = bool
-    document.getElementById('swFull').disabled = bool   
-    document.getElementById('checkBrak').disabled = bool
-    document.getElementById('tBrak').disabled = bool
-    document.getElementById('commit').disabled = bool
-}
 
 //если з-р не выбран - все заблокировать
 sname = document.querySelector('#sname').value
@@ -88,35 +71,42 @@ if (sname === 'Кто сегодня звукорежиссер?') {
 document.querySelector('#sname').addEventListener('change', function() {
     document.getElementById('statButton').disabled = false
     document.getElementById('start').disabled = false
+    document.getElementById('postfactum').disabled = true
     myName = readMyName()
 })
 
-function readMyName() {
-    sname = document.getElementById('sname').value
 
-    if (sname == 1) {
-        myName = 'Олег'
-    } else if (sname == 2) {
-        myName = 'Марк'
-    } else if (sname == 3) {
-        myName = 'Саша'
-    } else if (sname == 4) {
-        myName = 'Костя'
-    } else if (sname == 5) {
-        myName = 'Сергей'
-    }
-    return myName
-}
+document.getElementById('postfactum').addEventListener('click', function() {
+    document.getElementById('timeStart').textContent = sessionStorage.getItem('timeStart')  
+    let newTimeStart = prompt('введи новое время в формате YYYY-MM-DDTHH:MM:SS')
 
-function clearForm() {
-    document.getElementById('contentID').value = ''
-    document.getElementById('contentTitle').value = ''
-    document.getElementById('tBrak').value = ''
-    document.getElementById('timeStop').textContent = ''
-    document.getElementById('commit').textContent = ''
-    document.getElementById('commit').value = ''
-    document.getElementById('swFull').checked = false   
-}
+    //alert(`Тебе ${age} лет!`); // Тебе 100 лет!
+
+    console.log(new Date(newTimeStart))
+
+    if (new Date(newTimeStart) == 'Invalid Date') {
+        let isBoss = confirm(`Уверены: ${new Date(newTimeStart)}?`)
+
+        isBoss ? 
+            alert ('ха, я просто не изменю и все'):
+            console.log()
+
+    } else { 
+        let isBoss = confirm(`Уверены: ${new Date(newTimeStart)}?`)
+
+        ///Invalid Date!!!!
+
+        isBoss ? 
+        sessionStorage.setItem('timeStart', new Date(newTimeStart)):
+        document.getElementById('timeStart').textContent = sessionStorage.getItem('timeStart')
+
+        document.getElementById('timeStart').textContent = sessionStorage.getItem('timeStart') }
+        
+
+})
+
+
+
 
 document.querySelector('#start').addEventListener('click', function() {
     myTimer.start()
@@ -127,6 +117,7 @@ document.querySelector('#start').addEventListener('click', function() {
 
     inputFormsDisabled (false)
 
+    document.getElementById('postfactum').disabled = false
     document.getElementById('stop').disabled = false
     document.getElementById('sname').disabled = true
     document.getElementById('start').disabled = true  
@@ -184,7 +175,7 @@ document.querySelector('#contentID').addEventListener('change', function() {
 
 
     const idTest = document.querySelector('#contentID').value
-    db.collection(selectCollectionInBase()).where("ID", "==", `%0`)//idTest)
+    db.collection(selectCollectionInBase()).where("ID", "==", idTest)
         .get()
         .then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
@@ -219,6 +210,7 @@ document.querySelector('#stop').addEventListener('dblclick', function() {
 
     inputFormsDisabled (true)
 
+    document.getElementById('postfactum').disabled = true
     document.getElementById('start').disabled = false
     document.getElementById('sname').disabled = false
     document.getElementById('stop').disabled = true
@@ -382,3 +374,49 @@ console.log('statistic')
 //     .catch((error) => {
 //         console.log("Error getting documents: ", error);
 //     });
+
+function selectCollectionInBase() {
+    document.URL == 'http://localhost:5000/' ?
+    collection = 'test':
+    collection = 'users'
+
+    console.log(document.URL)
+    console.log('firebase', collection)
+    return collection
+}
+
+function inputFormsDisabled (bool) {
+    document.getElementById('contentID').disabled = bool
+    document.getElementById('contentTitle').disabled = bool
+    document.getElementById('swFull').disabled = bool   
+    document.getElementById('checkBrak').disabled = bool
+    document.getElementById('tBrak').disabled = bool
+    document.getElementById('commit').disabled = bool
+}
+
+function readMyName() {
+    sname = document.getElementById('sname').value
+
+    if (sname == 1) {
+        myName = 'Олег'
+    } else if (sname == 2) {
+        myName = 'Марк'
+    } else if (sname == 3) {
+        myName = 'Саша'
+    } else if (sname == 4) {
+        myName = 'Костя'
+    } else if (sname == 5) {
+        myName = 'Сергей'
+    }
+    return myName
+}
+
+function clearForm() {
+    document.getElementById('contentID').value = ''
+    document.getElementById('contentTitle').value = ''
+    document.getElementById('tBrak').value = ''
+    document.getElementById('timeStop').textContent = ''
+    document.getElementById('commit').textContent = ''
+    document.getElementById('commit').value = ''
+    document.getElementById('swFull').checked = false   
+}
