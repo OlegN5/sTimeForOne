@@ -49,7 +49,8 @@ let durKo = 0
 let durSa = 0 
 let durMa = 0 
 
-
+//!!!!!!!!!!!!!!!!!!!!!!
+//вынести сюда переменные session с сосотоянием заблокированных кнопок
 
 
 const myTimer = new Timer()
