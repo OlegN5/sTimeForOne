@@ -172,9 +172,8 @@ document.querySelector('#start').addEventListener('click', function() {
 document.querySelector('#contentID').addEventListener('change', function() {
 
     console.log(document.querySelector('#contentID').value)
-
-
-    const idTest = document.querySelector('#contentID').value
+    const idTest = document.querySelector('#contentID').value.toUpperCase()
+    document.querySelector('#contentID').value = idTest
     db.collection(selectCollectionInBase()).where("ID", "==", idTest)
         .get()
         .then((querySnapshot) => {
