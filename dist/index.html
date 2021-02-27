@@ -7,14 +7,34 @@
     <title>SoundTimeOne</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <!-- <link href="main.css" rel="stylesheet"></link> -->
-    <script src="/__/firebase/8.2.7/firebase-app.js"></script>
-    <script src="/__/firebase/8.2.7/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
 </head>
 <body>
     <h2 ad ='title' class="title" styles=color: green>SoundTimeOne</h2>
     <div id="app" class="conteiner-fluid">
         <div id='name' class="bg-light name">
-            <p>    </p>
+
+          <button type="ath" class="btn btn-warning btn-lg">Авторизация</button>
+
+          <form id='auth-form'>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="password">
+            </div>
+            <button type="submit" class="btn btn-primary">Войти</button>
+            <!-- <div class="mb-3 form-check"> -->
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Запомнить</label> 
+            <!-- </div> -->
+            
+          </form> 
+ 
+
             <select id='sname' class="form-select" aria-label="Default select example">
                 <option selected>Кто сегодня звукорежиссер?</option>
                 <option value="1">Олег</option>
@@ -27,6 +47,7 @@
             <p>Нажми старт как только узнал о работе:</p>
             <button id='start' type="button" class="btn btn-primary btn-lg">Жми Start</button>
             <button id='postfactum' type="button" class="btn btn-success btn-lg">Edit Start Time</button>
+             
             <!-- <button type="button" class="btn btn-secondary btn-lg" disabled>Button</button>-->
             <p> Начал работу: </p>
             <div id='timeStart'></div>

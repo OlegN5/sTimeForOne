@@ -1,4 +1,27 @@
 
+
+
+// function authWithEmailAndPassword(email, password) {
+// const API_KEY = 'AIzaSyBFtqYG8OVlI4E8VdBEMW9mLCBhfeUHHeI'
+// return fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${API_KEY}`, {
+//     method: 'POST',
+//     body: JSON.stringify({
+//         email, password,
+//         returnSecureToken: true
+//     }),
+//     headers: {
+//         'Content-Type': 'application/json' 
+//     }
+// })
+//      .then (response => response.json())
+//      .then (data => data.idToken)
+// } 
+ 
+
+
+
+
+
 const firebaseConfig = {
     apiKey: "AIzaSyBFtqYG8OVlI4E8VdBEMW9mLCBhfeUHHeI",
     authDomain: "stimeforone.firebaseapp.com",
@@ -8,9 +31,49 @@ const firebaseConfig = {
     appId: "1:302327929792:web:7f6a874a88fc988fc28625",
     measurementId: "G-WF2R2WM1Y6"
   };
+
+
+
+
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   var db = firebase.firestore();
+
+
+
+  document
+  .getElementById('auth-form')
+  .addEventListener('submit', authFormHandler)
+  
+  function authFormHandler(event) {
+  event.preventDefault()
+  const email = event.target.querySelector('#email').value
+  const password = event.target.querySelector('#password').value
+  
+//   authWithEmailAndPassword(email, password)
+//       .then(token =>{
+  
+//       })
+
+ 
+  }
+
+  firebase.auth().signInWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        // Signed in
+        var user = userCredential.user;
+        // ...
+      })
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+      }); 
+
+       
+  
+
+
+
 
   class Timer {
     constructor () {
@@ -49,12 +112,30 @@ let durKo = 0
 let durSa = 0 
 let durMa = 0 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //!!!!!!!!!!!!!!!!!!!!!!
 //вынести сюда переменные session с сосотоянием заблокированных кнопок
 
 
 const myTimer = new Timer()
-
 
 
 //если з-р не выбран - все заблокировать
