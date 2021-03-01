@@ -1,73 +1,74 @@
 
-
-
-// function authWithEmailAndPassword(email, password) {
-// const API_KEY = 'AIzaSyBFtqYG8OVlI4E8VdBEMW9mLCBhfeUHHeI'
-// return fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${API_KEY}`, {
-//     method: 'POST',
-//     body: JSON.stringify({
-//         email, password,
-//         returnSecureToken: true
-//     }),
-//     headers: {
-//         'Content-Type': 'application/json' 
-//     }
-// })
-//      .then (response => response.json())
-//      .then (data => data.idToken)
-// } 
- 
-
-
-
-
-
-const firebaseConfig = {
-    apiKey: "AIzaSyBFtqYG8OVlI4E8VdBEMW9mLCBhfeUHHeI",
+  const firebaseConfig = {
+    //apiKey: "AIzaSyBFtqYG8OVlI4E8VdBEMW9mLCBhfeUHHeI",
     authDomain: "stimeforone.firebaseapp.com",
+
     projectId: "stimeforone",
     storageBucket: "stimeforone.appspot.com",
     messagingSenderId: "302327929792",
     appId: "1:302327929792:web:7f6a874a88fc988fc28625",
     measurementId: "G-WF2R2WM1Y6"
   };
-
-
-
-
-  // Initialize Firebase
+  
+        // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   var db = firebase.firestore();
+
+function authWithEmailAndPassword(email, password) {
+const API_KEY = 'AIzaSyBFtqYG8OVlI4E8VdBEMW9mLCBhfeUHHeI'
+return fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${API_KEY}`, {
+    method: 'POST',
+    body: JSON.stringify({
+        email, password,
+        returnSecureToken: true
+    }),
+    headers: {
+        'Content-Type': 'application/json' 
+    }
+})
+     .then (response => response.json())
+     .then (data => data.idToken)
+} 
+ 
+
+
+
+
+
+
+
+
+
+
+//   // Initialize Firebase
+//   firebase.initializeApp(firebaseConfig);
+//   var db = firebase.firestore();
 
 
 
   document
-  .getElementById('auth-form')
-  .addEventListener('submit', authFormHandler)
+    .getElementById('auth-form')
+    .addEventListener('submit', authFormHandler)
   
   function authFormHandler(event) {
-  event.preventDefault()
-  const email = event.target.querySelector('#email').value
-  const password = event.target.querySelector('#password').value
+    event.preventDefault()
+    const email = event.target.querySelector('#email').value
+    const password = event.target.querySelector('#password').value
   
-//   authWithEmailAndPassword(email, password)
-//       .then(token =>{
-  
-//       })
+    authWithEmailAndPassword(email, password)
 
- 
   }
 
-  firebase.auth().signInWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        // Signed in
-        var user = userCredential.user;
-        // ...
-      })
-      .catch((error) => {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-      }); 
+//   firebase.auth().signInWithEmailAndPassword(email, password)
+//       .then((userCredential) => {
+//         // Signed in
+//         var user = userCredential.user;
+//         // ...
+//       })
+//       .catch((error) => {
+//         var errorCode = error.code;
+//         var errorMessage = error.message;
+//       }); 
 
        
   
