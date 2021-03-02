@@ -12,6 +12,9 @@ const firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
   var db = firebase.firestore();
 
+  
+
+
   class Timer {
     constructor () {
         this.myTimer
@@ -50,11 +53,32 @@ let durSa = 0
 let durMa = 0 
 
 //!!!!!!!!!!!!!!!!!!!!!!
-//вынести сюда переменные session с сосотоянием заблокированных кнопок
+//вынести сюда переменные session с состоянием заблокированных кнопок
 
 
 const myTimer = new Timer()
 
+
+if  (sessionStorage.data) {
+    myData = sessionStorage.data
+    console.log('myData', myData)
+    let savedata = confirm(`Есть несохраненные данные. ${sessionStorage.data}Сохранить?`)
+    savedata ? 
+      save():
+      notSave()
+}
+
+function save () {
+  alert('сохраняю')
+  console.log('sessionStorage.data', sessionStorage.data)
+  recordToBasa (sessionStorage.data)
+  
+}
+function notSave() {
+  alert('не буду сохранять')
+  sessionStorage.removeItem('data')
+
+}
 
 
 //если з-р не выбран - все заблокировать
@@ -194,9 +218,16 @@ document.querySelector('#contentID').addEventListener('change', function() {
         });
 })
 
+
+document.querySelector('#sname').value
+
+
+
+
+
 document.querySelector('#stop').addEventListener('dblclick', function() { 
     myTimer.stop()
-
+    console.log('dblclick')
     sname = document.querySelector('#sname').value
     ID = document.querySelector('#contentID').value
     Title = document.querySelector('#contentTitle').value
@@ -207,19 +238,14 @@ document.querySelector('#stop').addEventListener('dblclick', function() {
         Full = true:
         Full = false
     
-
-    inputFormsDisabled (true)
-
-    document.getElementById('postfactum').disabled = true
-    document.getElementById('start').disabled = false
-    document.getElementById('sname').disabled = false
-    document.getElementById('stop').disabled = true
-    
     let timeStop = new Date()
     document.getElementById('timeStop').textContent = timeStop
+    let timeStart = new Date(sessionStorage.timeStart)
+    let dataAdded = new Date()
+    const addFrom = 'sTimeForOne'
     
-    let timeStart = new Date(sessionStorage.getItem('timeStart'))
-
+    
+    console.log('лог финальной записи в базу')
     console.log('timeStart: ', timeStart)
     console.log('timeStop: ', timeStop);
     console.log('Звукорежиссер: ', myName)
@@ -229,27 +255,48 @@ document.querySelector('#stop').addEventListener('dblclick', function() {
     console.log('Комментарии: ', Commit)
     console.log('Полный отсмотр: ', Full)
     
-
-    
-    db.collection(selectCollectionInBase()).add({
+    const data = {
         name: myName,
+        dataAdded,
         timeStart: timeStart,
         timeStop: timeStop,
         ID: ID,
         Title: Title,
         Brak: Brak,
         Commit: Commit,
-        Full: Full
-    })
+        Full: Full,
+        addFrom
+    }
+    sessionStorage.data = data
+    console.log('data',data)
+    recordToBasa (data) 
+    
+
+})
+
+function recordToBasa (data) {
+db.collection(selectCollectionInBase1()).add(data)
     .then((docRef) => {
         alert(`Все хорошо!!!\nDocument written with ID: \n${docRef.id}`);
+        
+        document.getElementById('stop').disabled = true
+        inputFormsDisabled (true)
+        document.getElementById('postfactum').disabled = true
+        document.getElementById('start').disabled = false
+        document.getElementById('sname').disabled = false
+        sessionStorage.removeItem('data')
     })
     .catch((error) => {
+        
+
         alert(`ничего не получилось...\n свяжитесь с разработчиком`)
         console.error("Error adding document: ", error);
     });
+}
 
-})
+
+
+
 
 let clickStatistic = document.querySelector('#statButton')
 clickStatistic.addEventListener('click', function() { 
@@ -265,25 +312,25 @@ clickStatistic.addEventListener('click', function() {
     durMa = 0 
 
 console.log("dataNow.getHour", dataNow.getHours())
-    if (dataNow.getHours()>= 9 && dataNow.getHours() < 21) {
-        //Дневная смена
-       
-        smenaStart.setHours(9);
-        smenaStart.setMinutes(0)   
-    } else if (dataNow.getHours() >= 21) {
-        //Ночная смена
-       
-        smenaStart.setHours(21);
-        smenaStart.setMinutes(0)
-    } else if (dataNow.getHours() < 9) { //<9
-        //Ночная смена следующая дата( после 00:00) 
-        
-        
-        smenaStart.setDate(dataNow.getDate()-1)
-        smenaStart.setHours(21);
-        smenaStart.setMinutes(0)
-    }
 
+if (dataNow.getHours()>= 9 && dataNow.getHours() < 21) {
+    //Дневная смена
+   
+    smenaStart.setHours(9);
+    smenaStart.setMinutes(0)   
+} else if (dataNow.getHours() >= 21) {
+    //Ночная смена
+   
+    smenaStart.setHours(21);
+    smenaStart.setMinutes(0)
+} else if (dataNow.getHours() < 9) { //<9
+    //Ночная смена следующая дата( после 00:00) 
+    
+    
+    smenaStart.setDate(dataNow.getDate()-1)
+    smenaStart.setHours(21);
+    smenaStart.setMinutes(0)
+}
 
 db.collection(selectCollectionInBase()).where("timeStart", ">", smenaStart)
     .get()
