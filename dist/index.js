@@ -61,8 +61,9 @@ const myTimer = new Timer()
 
 if  (sessionStorage.data) {
     myData = sessionStorage.data
+    let userData = JSON.parse(sessionStorage.data);
     console.log('myData', myData)
-    let savedata = confirm(`Есть несохраненные данные. ${sessionStorage.data}Сохранить?`)
+    let savedata = confirm(`Есть несохраненные данные. ${userData}Сохранить?`)
     savedata ? 
       save():
       notSave()
@@ -71,7 +72,25 @@ if  (sessionStorage.data) {
 function save () {
   alert('сохраняю')
   console.log('sessionStorage.data', sessionStorage.data)
-  recordToBasa (sessionStorage.data)
+  let userData = JSON.parse(sessionStorage.data);
+  const data = {
+    name: userData.name,
+    dataAdded: new Date (userData.dataAdded),
+    timeStart: new Date (userData.timeStart),
+    timeStop: new Date (userData.timeStop),
+    ID: userData.ID,
+    Title: userData.Title,
+    Brak: userData.Brak,
+    Commit: userData.Commit,
+    Full: userData.Full,
+    addFrom: userData.addFrom
+}
+
+
+
+
+
+  recordToBasa (data)
   
 }
 function notSave() {
@@ -79,6 +98,10 @@ function notSave() {
   sessionStorage.removeItem('data')
 
 }
+
+    
+
+
 
 
 //если з-р не выбран - все заблокировать
@@ -267,18 +290,21 @@ document.querySelector('#stop').addEventListener('dblclick', function() {
         Full: Full,
         addFrom
     }
-    sessionStorage.data = data
-    console.log('data',data)
-    recordToBasa (data) 
+    sessionStorage.data = JSON.stringify(data)
+    let userData = JSON.parse(sessionStorage.data );
+    console.log('data', data)
+    console.log('sessionStorage.data',userData)
+    recordToBasa(data) 
     
+
+
 
 })
 
 function recordToBasa (data) {
-db.collection(selectCollectionInBase1()).add(data)
+db.collection(selectCollectionInBase()).add(data)
     .then((docRef) => {
         alert(`Все хорошо!!!\nDocument written with ID: \n${docRef.id}`);
-        
         document.getElementById('stop').disabled = true
         inputFormsDisabled (true)
         document.getElementById('postfactum').disabled = true
