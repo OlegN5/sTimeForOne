@@ -60,10 +60,10 @@ const myTimer = new Timer()
 
 
 if  (sessionStorage.data) {
-    myData = sessionStorage.data
+    //myData = sessionStorage.data
     let userData = JSON.parse(sessionStorage.data);
-    console.log('myData', myData)
-    let savedata = confirm(`Есть несохраненные данные. ${userData}Сохранить?`)
+    console.log('userData', userData)
+    let savedata = confirm(`Есть несохраненные данные: ${userData.name}, ${userData.ID}, ${userData.Title} - начало ${userData.timeStart}, окончание ${userData.timeStop}. Сохранить?`)
     savedata ? 
       save():
       notSave()
@@ -86,13 +86,10 @@ function save () {
     addFrom: userData.addFrom
 }
 
-
-
-
-
   recordToBasa (data)
   
 }
+
 function notSave() {
   alert('не буду сохранять')
   sessionStorage.removeItem('data')
