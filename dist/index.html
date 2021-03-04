@@ -27,7 +27,7 @@
             <p></p>
             <p>Нажми старт как только узнал о работе:</p>
             <button id='start' type="button" class="btn btn-primary btn-lg">Жми Start</button>
-            <button id='postfactum' type="button" class="btn btn-success btn-lg">Edit Start Time</button>
+            <button id='postfactum' type="button" class="btn btn-success btn-lg" disabled >Edit Start Time</button>
             <!-- <button type="button" class="btn btn-secondary btn-lg" disabled>Button</button>-->
             <p> Начал работу: </p>
             <div id='timeStart'></div>
@@ -39,13 +39,13 @@
             <p > </p>
             <div class="input-group input-group-lg">
                 <span class="input-group-text" id="inputGroup-sizing-lg">ID</span>
-                <input id = 'contentID' type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" value = '01HZ18022021' >
+                <input id = 'contentID' type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
             </div>
             <p></p>
 
             <div class="input-group input-group-lg">
                 <span class="input-group-text" id="inputGroup-sizing-lg">title</span>
-                <input id = 'contentTitle' type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" value = "Поле чудес">
+                <input id = 'contentTitle' type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
             </div>
 
             <p></p>
@@ -63,46 +63,18 @@
             <p></p>
             <div class="input-group mb-3">
                 <div class="input-group-text">
-                    <input id='checkBrak' class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">Брак:
+                    <!-- <input id='checkBrak' class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">Брак: -->
+                    <class="form" value="" >Брак:
                 </div>
-                    <input id='tBrak' type="text" class="form-control" aria-label="Text input with checkbox" value='везде искажения'>
+                    <input id='tBrak' type="text" class="form-control" aria-label="Text input with checkbox">
                 </div>
               <p>например: НС - несинхрон, НР, ИТ, НИ</p>
               
-              
-              <!-- <div id="chBr" class="conteiner-fluid">
-                
-              <div class="form-check form-check-inline">
-                <input id='ns' class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                <label class="form-check-label" for="inlineCheckbox1">НС</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input id='nr' class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                <label class="form-check-label" for="inlineCheckbox2">НР</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input id='ni' class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" >
-                <label class="form-check-label" for="inlineCheckbox3">НИ</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input id='it' class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option4" >
-                <label class="form-check-label" for="inlineCheckbox3">ИТ</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input id='p' class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option4" >
-                <label class="form-check-label" for="inlineCheckbox3">П</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input id='pp' class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option4" >
-                <label class="form-check-label" for="inlineCheckbox3">ПП</label>
-              </div>
-             </div> -->
-
-                <p></p>
+              <p></p>
 
               <div class="input-group">
                 <span class="input-group-text">Comments</span>
-                <textarea id='commit' class="form-control" aria-label="With textarea">непригодно к эфиру</textarea>
+                <textarea id='commit' class="form-control" aria-label="With textarea"></textarea>
               </div>
 
               <p></p>
@@ -132,21 +104,9 @@
         <p id='ko'></p>
         <p id='ol'></p>
         
-          
-          
-          <!-- <p>Сергей</p>
-          <p id='sergey'></p>
-          <p>Костя</p>
-          <p id='kostja'></p>
-          <p>Саша</p>
-          <p id='sasha'></p>
-          <p>Марк</p>
-          <p id='mark'></p>
-          <p>Олег</p>
-          <p id='oleg'></p> -->
         </div>
     </div>
-    <p>v0.343</p>
+    <p id='version'>v0.35</p>
     <script src = "index.js"></script>
 </body>
 </html>
