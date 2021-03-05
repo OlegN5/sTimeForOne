@@ -60,6 +60,12 @@ window.onload = function() {
 }
  function notContin () {
     localStorage.removeItem('timeStart')
+    localStorage.removeItem('contentID')
+    localStorage.removeItem('contentTitle')
+    localStorage.removeItem('tBrak')
+    localStorage.removeItem('commit')
+    localStorage.removeItem('swFull')
+    clearForm()
     console.log('notContin')
 
     document.getElementById('start').disabled = false
