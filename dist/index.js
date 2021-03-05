@@ -310,23 +310,27 @@ document.querySelector('#contentID').addEventListener('change', function() {
     const idTest = document.querySelector('#contentID').value.toUpperCase()
     document.querySelector('#contentID').value = idTest
     localStorage.contentID = idTest
-    db.collection(selectCollectionInBase()).where("ID", "==", idTest)
-        .get()
-        .then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-                // doc.data() is never undefined for query doc snapshots
-                my = doc.data()
+    if ((idTest === '') & (idTest === ' ')) {
+        db.collection(selectCollectionInBase()).where("ID", "==", idTest)
+                .get()
+                .then((querySnapshot) => {
+                    querySnapshot.forEach((doc) => {
+                        // doc.data() is never undefined for query doc snapshots
+                        my = doc.data()
 
-                let tStart = new Date(0)
-                tStart.setSeconds(my.timeStart.seconds) 
+                        let tStart = new Date(0)
+                        tStart.setSeconds(my.timeStart.seconds) 
 
-                alert (`АХТУНГ!!! ID:${idTest} есть в базе, смотрел ${my.name}, ${tStart}, брак: ${my.Brak}, комментарии: ${my.Commit}`)
-                console.log(doc.id, " => ", doc.data())
-            });
-        })
-        .catch((error) => {
-            console.log("Error getting documents: ", error);
-        });
+                        alert (`АХТУНГ!!! ID:${idTest} есть в базе, смотрел ${my.name}, ${tStart}, брак: ${my.Brak}, комментарии: ${my.Commit}`)
+                        console.log(doc.id, " => ", doc.data())
+                    });
+                })
+                .catch((error) => {
+                    console.log("Error getting documents: ", error);
+                });
+    }
+    
+
 })
 document.querySelector('#contentTitle').addEventListener('change', function() {
 
