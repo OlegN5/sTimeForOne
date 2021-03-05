@@ -312,7 +312,7 @@ document.querySelector('#contentID').addEventListener('change', function() {
     localStorage.contentID = idTest
     console.log("поиск по базе снаружи")
     console.log("idTest", idTest)
-    if (!(idTest === '') & !(idTest === ' ')) {
+    if (!(idTest == '') & !(idTest == ' ')) {
         console.log("поиск по базе внутри")
         db.collection(selectCollectionInBase()).where("ID", "==", idTest)
                 .get()
