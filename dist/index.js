@@ -126,25 +126,25 @@ inputInit ()
 console.log('006')
 function inputInit () {
 if (localStorage.contentID) {
-    document.querySelector('#contentID').value = localStorage.contentID
+    document.querySelector('#contentID').value = localStorage.contentID.trim()
 } else {
     localStorage.contentID = ' '
 }
 
 if (localStorage.contentTitle) {
-    document.querySelector('#contentTitle').value = localStorage.contentTitle
+    document.querySelector('#contentTitle').value = localStorage.contentTitle.trim()
 } else {
     localStorage.contentTitle = ' '
 }
 
 if (localStorage.tBrak) {
-    document.querySelector('#tBrak').value = localStorage.tBrak
+    document.querySelector('#tBrak').value = localStorage.tBrak.trim()
 } else {
     localStorage.tBrak = ' '
 }
 
 if (localStorage.commit) {
-    document.querySelector('#commit').value = localStorage.commit
+    document.querySelector('#commit').value = localStorage.commit.trim()
 } else {
     localStorage.commit = ' '
 }
@@ -310,7 +310,10 @@ document.querySelector('#contentID').addEventListener('change', function() {
     const idTest = document.querySelector('#contentID').value.toUpperCase()
     document.querySelector('#contentID').value = idTest
     localStorage.contentID = idTest
-    if ((idTest === '') & (idTest === ' ')) {
+    console.log("поиск по базе снаружи")
+    console.log("idTest", idTest)
+    if (!(idTest === '') & !(idTest === ' ')) {
+        console.log("поиск по базе внутри")
         db.collection(selectCollectionInBase()).where("ID", "==", idTest)
                 .get()
                 .then((querySnapshot) => {
