@@ -546,7 +546,7 @@ document.querySelector('#statButton').addEventListener('click', function() {
         document.getElementById('ko').textContent = `Костя за смену отработал: ${durKoST}`
         document.getElementById('ol').textContent = `Олег за смену отработал: ${durOlST}`
         document.getElementById('se').textContent = `Сергей за смену отработал: ${durSeST}`
-        document.getElementById('in').textContent = `Инна за смену отработал: ${durInST}`
+        document.getElementById('in').textContent = `Инна за смену отработала: ${durInST}`
 
         
             
