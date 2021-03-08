@@ -55,8 +55,6 @@ window.onload = function() {
             contin():
             notContin();
     }
-
-    
 }
  function notContin () {
     localStorage.removeItem('timeStart')
