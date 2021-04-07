@@ -262,6 +262,65 @@ document.getElementById("sname").addEventListener("change", function () {
   }
 });
 
+
+document.querySelector("#news").addEventListener("click", function () {
+
+  alert("В названия передач можно забивать в большинстве случаев только первые буквы (пофиг на регистр) - будет работать автозамена");
+  alert(`ДП=ДАВАЙ ПОЖЕНИМСЯ
+  МП=МОДНЫЙ ПРИГОВОР
+  ВП=ВРЕМЯ ПОКАЖЕТ
+  ЧГК=ЧТО? ГДЕ? КОГДА?
+  МЖ=МУЖСКОЕ/ЖЕНСКОЕ
+  ДУ=ДОБРОЕ УТРО
+  ТИ=ТЕСТ ИНТЕЛЛИГЕЙН
+  ТП=ТЕСТ ПРЕСЕТА
+  ЖЖ=ЖЕНСКОЙ ЖУРНАЛ
+  ЖД=ЖИЗНЬ ДРУГИХ
+  ВУ=ВЕЧЕРНИЙ УРГАНТ
+  З=ЗДОРОВЬЕ
+  ВПИ=ВРАЧИ ПРОТИВ ИНТЕРНЕТА
+  А=АНОНСЫ
+  С=СПЕЦПРОЕКТЫ
+  ГД=ГОЛОС.ДЕТИ
+  Г=ГОЛОС'
+  Г6=ГОЛОС.60+
+  ПГ=ПУСТЬ ГОВОРЯТ
+  НСД=НА САМОМ ДЕЛЕ
+  БИ=БОЛЬШАЯ ИГРА
+  ДТ=ДОК-ТОК
+  НЗ=НЕПУТЕВЫЕ ЗАМЕТКИ
+  ИГ=ИГРАЙ ГАРМОНЬ, ЛЮБИМАЯ`);
+
+  alert(`Ч=ЧАСОВОЙ
+  ВВ=ВИДЕЛИ ВИДЕО
+  ТТ=ТОЧЬ-В-ТОЧЬ
+  СП=СЛОВО ПАСТЫРЯ
+  УУ=УМНИКИ И УМНИЦЫ
+  СВ=СЕГОДНЯ ВЕЧЕРОМ
+  ЛВ=ЛУЧШЕ ВСЕХ
+  101=101 ВОПРОС ВЗРОСЛОМУ
+  П=ПОЗНЕР
+  ЖЗ=ЖИТЬ ЗДОРОВО
+  ЛП=ЛЕДНИКОВЫЙ ПЕРИОД
+  ПЧ=ПОЛЕ ЧУДЕС
+  ЯПЗ=Я ПОЧТИ ЗНАМЕНИТ
+  ТА=ТРИ АККОРДА
+  ЧИЗ=ЧЕЛОВЕК И ЗАКОН
+  НС=НОВОСТИ СПОРТА
+  Н=НОВОСТИ)`);
+  alert(`РПЛ=РАЗБОР ОЦЕНКИ ПЕРЕДАЧ С В.Лазуткиным
+  РПБ=РАЗБОР ОЦЕНКИ ПЕРЕДАЧ С А.Бордаченковым
+  1=ВЫЗОВ В АЗП-1
+  АКП=РАБОТА В АКП`
+  );
+
+  alert("Не забывайте переключать свичер при полном отсмотре");
+  alert("Больше эфирных программ - меньше архива и повторного отсмотра");
+  alert("Эфир по возможности ПОЛНОСТЬЮ, все остальное как пойдет");
+})
+
+
+
 document.querySelector("#start").addEventListener("click", function () {
   myTimer.start();
   clearForm();
@@ -368,7 +427,53 @@ document.querySelector("#contentID").addEventListener("change", function () {
 });
 document.querySelector("#contentTitle").addEventListener("change", function () {
   console.log(document.querySelector("#contentTitle").value);
-  const titleTest = document.querySelector("#contentTitle").value.toUpperCase();
+  let titleTest = document.querySelector("#contentTitle").value.toUpperCase();
+  if (titleTest === 'ДП') {titleTest='ДАВАЙ ПОЖЕНИМСЯ'}
+  if (titleTest === 'МП') {titleTest='МОДНЫЙ ПРИГОВОР'}
+  if (titleTest === 'ВП') {titleTest='ВРЕМЯ ПОКАЖЕТ'}
+  if (titleTest === '?') {titleTest='ЧТО? ГДЕ? КОГДА?'}
+  if (titleTest === 'ЧГК') {titleTest='ЧТО? ГДЕ? КОГДА?'}
+  if (titleTest === 'МЖ') {titleTest='МУЖСКОЕ/ЖЕНСКОЕ'}
+  if (titleTest === 'ДУ') {titleTest='ДОБРОЕ УТРО'}
+  if (titleTest === 'ТИ') {titleTest='ТЕСТ ИНТЕЛЛИГЕЙН'}
+  if (titleTest === 'ТП') {titleTest='ТЕСТ ПРЕСЕТА'}
+  if (titleTest === 'ЖЖ') {titleTest='ЖЕНСКОЙ ЖУРНАЛ'}
+  if (titleTest === 'ЖД') {titleTest='ЖИЗНЬ ДРУГИХ'}
+  if (titleTest === 'ВУ') {titleTest='ВЕЧЕРНИЙ УРГАНТ'}
+  if (titleTest === 'З') {titleTest='ЗДОРОВЬЕ'}
+  if (titleTest === 'ВПИ') {titleTest='ВРАЧИ ПРОТИВ ИНТЕРНЕТА'}
+  if (titleTest === 'А') {titleTest='АНОНСЫ'}
+  if (titleTest === 'С') {titleTest='СПЕЦПРОЕКТЫ'}
+  if (titleTest === 'ГД') {titleTest='ГОЛОС.ДЕТИ'}
+  if (titleTest === 'Г') {titleTest='ГОЛОС'}
+  if (titleTest === 'Г6') {titleTest='ГОЛОС.60+'}
+  if (titleTest === 'ПГ') {titleTest='ПУСТЬ ГОВОРЯТ'}
+  if (titleTest === 'БИ') {titleTest='БОЛЬШАЯ ИГРА'}
+  if (titleTest === 'ДТ') {titleTest='ДОК-ТОК'}
+  if (titleTest === 'НЗ') {titleTest='НЕПУТЕВЫЕ ЗАМЕТКИ'}
+  if (titleTest === 'ИГ') {titleTest='ИГРАЙ ГАРМОНЬ, ЛЮБИМАЯ'}
+  if (titleTest === 'Ч') {titleTest='ЧАСОВОЙ'}
+  if (titleTest === 'ВВ') {titleTest='ВИДЕЛИ ВИДЕО'}
+  if (titleTest === 'ТТ') {titleTest='ТОЧЬ-В-ТОЧЬ'}
+  if (titleTest === 'СП') {titleTest='СЛОВО ПАСТЫРЯ'}
+  if (titleTest === 'УУ') {titleTest='УМНИКИ И УМНИЦЫ'}
+  if (titleTest === 'СВ') {titleTest='СЕГОДНЯ ВЕЧЕРОМ'}
+  if (titleTest === 'ЛВ') {titleTest='ЛУЧШЕ ВСЕХ'}
+  if (titleTest === '101') {titleTest='101 ВОПРОС ВЗРОСЛОМУ'}
+  if (titleTest === 'П') {titleTest='ПОЗНЕР'}
+  if (titleTest === 'ЖЗ') {titleTest='ЖИТЬ ЗДОРОВО'}
+  if (titleTest === 'ЛП') {titleTest='ЛЕДНИКОВЫЙ ПЕРИОД'}
+  if (titleTest === 'ПЧ') {titleTest='ПОЛЕ ЧУДЕС'}
+  if (titleTest === 'ЯПЗ') {titleTest='Я ПОЧТИ ЗНАМЕНИТ'}
+  if (titleTest === 'ТА') {titleTest='ТРИ АККОРДА'}
+  if (titleTest === 'ЧИЗ') {titleTest='ЧЕЛОВЕК И ЗАКОН'}
+  if (titleTest === 'НС') {titleTest='НОВОСТИ СПОРТА'}
+  if (titleTest === 'Н') {titleTest='НОВОСТИ'}
+  if (titleTest === 'НСД') {titleTest='НА САМОМ ДЕЛЕ'}
+  if (titleTest === 'РПЛ') {titleTest='РАЗБОР ОЦЕНКИ ПЕРЕДАЧ С В.Лазуткиным'}
+  if (titleTest === 'РПБ') {titleTest='РАЗБОР ОЦЕНКИ ПЕРЕДАЧ С А.Бордаченковым'}
+  if (titleTest === '1') {titleTest='ВЫЗОВ В АЗП-1'}
+  if (titleTest === 'АКП') {titleTest='РАБОТА В АКП'}
   document.querySelector("#contentTitle").value = titleTest;
   localStorage.contentTitle = titleTest;
 });
