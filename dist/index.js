@@ -307,7 +307,8 @@ document.querySelector("#news").addEventListener("click", function () {
   ТА=ТРИ АККОРДА
   ЧИЗ=ЧЕЛОВЕК И ЗАКОН
   НС=НОВОСТИ СПОРТА
-  Н=НОВОСТИ)`);
+  Н=НОВОСТИ)
+  КХСМ=КТО ХОЧЕТ СТАТЬ МИЛЛИОНЕРОМ`);
   alert(`РПЛ=РАЗБОР ОЦЕНКИ ПЕРЕДАЧ С В.Лазуткиным
   РПБ=РАЗБОР ОЦЕНКИ ПЕРЕДАЧ С А.Бордаченковым
   1=ВЫЗОВ В АЗП-1
@@ -474,6 +475,8 @@ document.querySelector("#contentTitle").addEventListener("change", function () {
   if (titleTest === 'РПБ') {titleTest='РАЗБОР ОЦЕНКИ ПЕРЕДАЧ С А.Бордаченковым'}
   if (titleTest === '1') {titleTest='ВЫЗОВ В АЗП-1'}
   if (titleTest === 'АКП') {titleTest='РАБОТА В АКП'}
+  if (titleTest === 'КХСМ') {titleTest='КТО ХОЧЕТ СТАТЬ МИЛЛИОНЕРОМ'}
+  
   document.querySelector("#contentTitle").value = titleTest;
   localStorage.contentTitle = titleTest;
 });
