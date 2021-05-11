@@ -274,7 +274,7 @@ document.querySelector("#news").addEventListener("click", function () {
   ДУ=ДОБРОЕ УТРО
   ТИ=ТЕСТ ИНТЕЛЛИГЕЙН
   ТП=ТЕСТ ПРЕСЕТА
-  ЖЖ=ЖЕНСКОЙ ЖУРНАЛ
+  ЖЖ=ЖЕНСКИЙ ЖУРНАЛ
   ЖД=ЖИЗНЬ ДРУГИХ
   ВУ=ВЕЧЕРНИЙ УРГАНТ
   З=ЗДОРОВЬЕ
@@ -437,7 +437,7 @@ document.querySelector("#contentTitle").addEventListener("change", function () {
   if (titleTest === 'ДУ') {titleTest='ДОБРОЕ УТРО'}
   if (titleTest === 'ТИ') {titleTest='ТЕСТ ИНТЕЛЛИГЕЙН'}
   if (titleTest === 'ТП') {titleTest='ТЕСТ ПРЕСЕТА'}
-  if (titleTest === 'ЖЖ') {titleTest='ЖЕНСКОЙ ЖУРНАЛ'}
+  if (titleTest === 'ЖЖ') {titleTest='ЖЕНСКИЙ ЖУРНАЛ'}
   if (titleTest === 'ЖД') {titleTest='ЖИЗНЬ ДРУГИХ'}
   if (titleTest === 'ВУ') {titleTest='ВЕЧЕРНИЙ УРГАНТ'}
   if (titleTest === 'З') {titleTest='ЗДОРОВЬЕ'}
@@ -601,6 +601,7 @@ document.querySelector("#statButton").addEventListener("click", function () {
   durSa = 0;
   durMa = 0;
   durIn = 0;
+  durSn = 0;
 
   console.log("dataNow.getHour", dataNow.getHours());
 
@@ -644,12 +645,14 @@ document.querySelector("#statButton").addEventListener("click", function () {
           durKo += duration;
         } else if (my.name === "Марк") {
           durMa += duration;
-        } else if (my.name === "Сергей") {
+        } else if (my.name === "Сергей Измайлов") {
           durSe += duration;
         } else if (my.name === "Олег") {
           durOl += duration;
         } else if (my.name === "Инна") {
           durIn += duration;
+        } else if (my.name === "Сергей Неретин") {
+          durSn += duration;
         }
         console.log("my", my.name);
         console.log("tStart", tStart.seconds);
@@ -675,6 +678,9 @@ document.querySelector("#statButton").addEventListener("click", function () {
       ddate = new Date(0);
       ddate.setSeconds(durIn);
       let durInST = ddate.toISOString().substr(11, 8);
+      ddate = new Date(0);
+      ddate.setSeconds(durSn);
+      let durSnST = ddate.toISOString().substr(11, 8);
 
       document.getElementById(
         "statistic"
@@ -693,10 +699,13 @@ document.querySelector("#statButton").addEventListener("click", function () {
       ).textContent = `Олег за смену отработал: ${durOlST}`;
       document.getElementById(
         "se"
-      ).textContent = `Сергей за смену отработал: ${durSeST}`;
+      ).textContent = `Сергей И. за смену отработал: ${durSeST}`;
       document.getElementById(
         "in"
       ).textContent = `Инна за смену отработала: ${durInST}`;
+      document.getElementById(
+        "sn"
+      ).textContent = `Сергей Н. за смену отработала: ${durSnST}`;
     })
     .catch((error) => {
       console.log("Error getting documents: ", error);
@@ -758,9 +767,11 @@ function readMyName() {
   } else if (sname == 4) {
     return "Костя";
   } else if (sname == 5) {
-    return "Сергей";
+    return "Сергей Измайлов";
   } else if (sname == 6) {
     return "Инна";
+  } else if (sname == 7) {
+    return "Сергей Неретин";
   } else {
     return "Кто сегодня звукорежиссер?";
   }
@@ -775,10 +786,12 @@ function MyNameToValue(myName) {
     return 3;
   } else if (myName === "Костя") {
     return 4;
-  } else if (myName === "Сергей") {
+  } else if (myName === "Сергей Измайлов") {
     return 5;
   } else if (myName === "Инна") {
     return 6;
+  } else if (myName === "Сергей Неретин") {
+    return 7;
   } else if (myName === "Кто сегодня звукорежиссер?") {
     return 0;
   }
