@@ -428,56 +428,90 @@ document.querySelector("#contentID").addEventListener("change", function () {
 document.querySelector("#contentTitle").addEventListener("change", function () {
   console.log(document.querySelector("#contentTitle").value);
   let titleTest = document.querySelector("#contentTitle").value.toUpperCase();
-  if (titleTest === 'ДП') {titleTest='ДАВАЙ ПОЖЕНИМСЯ'}
-  if (titleTest === 'МП') {titleTest='МОДНЫЙ ПРИГОВОР'}
-  if (titleTest === 'ВП') {titleTest='ВРЕМЯ ПОКАЖЕТ'}
-  if (titleTest === '?') {titleTest='ЧТО? ГДЕ? КОГДА?'}
+  idText = ''
+  if (titleTest === 'ДП') {titleTest='ДАВАЙ ПОЖЕНИМСЯ'
+  idText='19DP'}
+  if (titleTest === 'АА') {titleTest='АБРАКАДАБРА'}
+  if (titleTest === 'УМ') {titleTest='УГАДАЙ МЕЛОДИЮ'
+  idText='08UM'}
+  if (titleTest === 'МП') {titleTest='МОДНЫЙ ПРИГОВОР'
+  idText='19MP'}
+  if (titleTest === 'ВП') {titleTest='ВРЕМЯ ПОКАЖЕТ'
+  idText='14VP'}
+  if (titleTest === '?') {titleTest='ЧТО? ГДЕ? КОГДА?'
+  idText='08GK'}
   if (titleTest === 'ЧГК') {titleTest='ЧТО? ГДЕ? КОГДА?'}
-  if (titleTest === 'МЖ') {titleTest='МУЖСКОЕ/ЖЕНСКОЕ'}
+  if (titleTest === 'МЖ') {titleTest='МУЖСКОЕ/ЖЕНСКОЕ'
+  idText='14MJ'}
   if (titleTest === 'ДУ') {titleTest='ДОБРОЕ УТРО'}
   if (titleTest === 'ТИ') {titleTest='ТЕСТ ИНТЕЛЛИГЕЙН'}
   if (titleTest === 'ТП') {titleTest='ТЕСТ ПРЕСЕТА'}
-  if (titleTest === 'ЖЖ') {titleTest='ЖЕНСКИЙ ЖУРНАЛ'}
+  if (titleTest === 'ЖЖ') {titleTest='ЖЕНСКИЙ ЖУРНАЛ'
+  idText='15JJ'}
   if (titleTest === 'ЖД') {titleTest='ЖИЗНЬ ДРУГИХ'}
-  if (titleTest === 'ВУ') {titleTest='ВЕЧЕРНИЙ УРГАНТ'}
-  if (titleTest === 'З') {titleTest='ЗДОРОВЬЕ'}
+  if (titleTest === 'ВУ') {titleTest='ВЕЧЕРНИЙ УРГАНТ'
+  idText='08VU'}
+  if (titleTest === 'З') {titleTest='ЗДОРОВЬЕ'
+  idText='11ZD'}
   if (titleTest === 'ВПИ') {titleTest='ВРАЧИ ПРОТИВ ИНТЕРНЕТА'}
   if (titleTest === 'А') {titleTest='АНОНСЫ'}
   if (titleTest === 'С') {titleTest='СПЕЦПРОЕКТЫ'}
   if (titleTest === 'ГД') {titleTest='ГОЛОС.ДЕТИ'}
-  if (titleTest === 'Г') {titleTest='ГОЛОС'}
+  if (titleTest === 'Г') {titleTest='ГОЛОС'
+  idText='07GD'}
   if (titleTest === 'Г6') {titleTest='ГОЛОС.60+'}
-  if (titleTest === 'ПГ') {titleTest='ПУСТЬ ГОВОРЯТ'}
-  if (titleTest === 'БИ') {titleTest='БОЛЬШАЯ ИГРА'}
-  if (titleTest === 'ДТ') {titleTest='ДОК-ТОК'}
+  if (titleTest === 'ПГ') {titleTest='ПУСТЬ ГОВОРЯТ'
+  idText='19PG'}
+  if (titleTest === 'БИ') {titleTest='БОЛЬШАЯ ИГРА'
+  idText='19BI'}
+  if (titleTest === 'ДТ') {titleTest='ДОК-ТОК'
+  idText='19DT'}
   if (titleTest === 'НЗ') {titleTest='НЕПУТЕВЫЕ ЗАМЕТКИ'}
   if (titleTest === 'ИГ') {titleTest='ИГРАЙ ГАРМОНЬ, ЛЮБИМАЯ'}
   if (titleTest === 'Ч') {titleTest='ЧАСОВОЙ'}
-  if (titleTest === 'ВВ') {titleTest='ВИДЕЛИ ВИДЕО'}
-  if (titleTest === 'ТТ') {titleTest='ТОЧЬ-В-ТОЧЬ'}
+  if (titleTest === 'ВВ') {titleTest='ВИДЕЛИ ВИДЕО'
+  idText='19VV'}
+  if (titleTest === 'ТТ') {titleTest='ТОЧЬ-В-ТОЧЬ'
+  idText='07TT'}
   if (titleTest === 'СП') {titleTest='СЛОВО ПАСТЫРЯ'}
-  if (titleTest === 'УУ') {titleTest='УМНИКИ И УМНИЦЫ'}
-  if (titleTest === 'СВ') {titleTest='СЕГОДНЯ ВЕЧЕРОМ'}
-  if (titleTest === 'ЛВ') {titleTest='ЛУЧШЕ ВСЕХ'}
+  if (titleTest === 'УУ') {titleTest='УМНИКИ И УМНИЦЫ'
+  idText='08UU'}
+  if (titleTest === 'СВ') {titleTest='СЕГОДНЯ ВЕЧЕРОМ'
+  idText='19SV'}
+  if (titleTest === 'ЛВ') {titleTest='ЛУЧШЕ ВСЕХ'
+  idText='08LV'}
   if (titleTest === '101') {titleTest='101 ВОПРОС ВЗРОСЛОМУ'}
   if (titleTest === 'П') {titleTest='ПОЗНЕР'}
-  if (titleTest === 'ЖЗ') {titleTest='ЖИТЬ ЗДОРОВО'}
+  if (titleTest === 'ЖЗ') {titleTest='ЖИТЬ ЗДОРОВО'
+  idText='11JZ'}
   if (titleTest === 'ЛП') {titleTest='ЛЕДНИКОВЫЙ ПЕРИОД'}
-  if (titleTest === 'ПЧ') {titleTest='ПОЛЕ ЧУДЕС'}
+  if (titleTest === 'ПЧ') {titleTest='ПОЛЕ ЧУДЕС'
+  idText='08PC'}
   if (titleTest === 'ЯПЗ') {titleTest='Я ПОЧТИ ЗНАМЕНИТ'}
-  if (titleTest === 'ТА') {titleTest='ТРИ АККОРДА'}
-  if (titleTest === 'ЧИЗ') {titleTest='ЧЕЛОВЕК И ЗАКОН'}
+  if (titleTest === 'ТА') {titleTest='ТРИ АККОРДА'
+  idText='07TA'}
+  if (titleTest === 'ЧИЗ') {titleTest='ЧЕЛОВЕК И ЗАКОН'
+  idText='03CZ'}
   if (titleTest === 'НС') {titleTest='НОВОСТИ СПОРТА'}
   if (titleTest === 'Н') {titleTest='НОВОСТИ'}
-  if (titleTest === 'НСД') {titleTest='НА САМОМ ДЕЛЕ'}
-  if (titleTest === 'РПЛ') {titleTest='РАЗБОР ОЦЕНКИ ПЕРЕДАЧ С В.Лазуткиным'}
-  if (titleTest === 'РПБ') {titleTest='РАЗБОР ОЦЕНКИ ПЕРЕДАЧ С А.Бордаченковым'}
+  if (titleTest === 'НСД') {titleTest='НА САМОМ ДЕЛЕ'
+  idText='19SD'}
+  if (titleTest === 'РПЛ') {titleTest='РАЗБОР ОЦЕНКИ ПЕРЕДАЧ С В.Лазуткиным'
+  idText='XXX'}
+  if (titleTest === 'РПБ') {titleTest='РАЗБОР ОЦЕНКИ ПЕРЕДАЧ С А.Бордаченковым'
+  idText='XXX'}
   if (titleTest === '1') {titleTest='ВЫЗОВ В АЗП-1'}
   if (titleTest === 'АКП') {titleTest='РАБОТА В АКП'}
-  if (titleTest === 'КХСМ') {titleTest='КТО ХОЧЕТ СТАТЬ МИЛЛИОНЕРОМ?'}
+  if (titleTest === 'КХСМ') {titleTest='КТО ХОЧЕТ СТАТЬ МИЛЛИОНЕРОМ?'
+  idText='08KH'}
   
   document.querySelector("#contentTitle").value = titleTest;
   localStorage.contentTitle = titleTest;
+  
+  document.querySelector("#contentID").value = idText;
+  
+  
+
 });
 
 document.querySelector("#tBrak").addEventListener("change", function () {
@@ -705,7 +739,7 @@ document.querySelector("#statButton").addEventListener("click", function () {
       ).textContent = `Инна за смену отработала: ${durInST}`;
       document.getElementById(
         "sn"
-      ).textContent = `Сергей Н. за смену отработала: ${durSnST}`;
+      ).textContent = `Сергей Н. за смену отработал: ${durSnST}`;
     })
     .catch((error) => {
       console.log("Error getting documents: ", error);
