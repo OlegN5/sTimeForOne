@@ -430,16 +430,16 @@ document.querySelector("#contentTitle").addEventListener("change", function () {
   let titleTest = document.querySelector("#contentTitle").value.toUpperCase();
   idText = ''
   if (titleTest === 'ДП') {titleTest='ДАВАЙ ПОЖЕНИМСЯ'
-  idText='19DP'}
+  idText='19DP0'}
   if (titleTest === 'АА') {titleTest='АБРАКАДАБРА'}
   if (titleTest === 'УМ') {titleTest='УГАДАЙ МЕЛОДИЮ'
-  idText='08UM'}
+  idText='08UM0'}
   if (titleTest === 'МП') {titleTest='МОДНЫЙ ПРИГОВОР'
-  idText='19MP'}
+  idText='19MP0'}
   if (titleTest === 'ВП') {titleTest='ВРЕМЯ ПОКАЖЕТ'
   idText='14VP'}
   if (titleTest === '?') {titleTest='ЧТО? ГДЕ? КОГДА?'
-  idText='08GK'}
+  idText='08GK0'}
   if (titleTest === 'ЧГК') {titleTest='ЧТО? ГДЕ? КОГДА?'}
   if (titleTest === 'МЖ') {titleTest='МУЖСКОЕ/ЖЕНСКОЕ'
   idText='14MJ'}
@@ -452,50 +452,50 @@ document.querySelector("#contentTitle").addEventListener("change", function () {
   if (titleTest === 'ВУ') {titleTest='ВЕЧЕРНИЙ УРГАНТ'
   idText='08VU'}
   if (titleTest === 'З') {titleTest='ЗДОРОВЬЕ'
-  idText='11ZD'}
+  idText='11ZD0'}
   if (titleTest === 'ВПИ') {titleTest='ВРАЧИ ПРОТИВ ИНТЕРНЕТА'}
   if (titleTest === 'А') {titleTest='АНОНСЫ'}
   if (titleTest === 'С') {titleTest='СПЕЦПРОЕКТЫ'}
   if (titleTest === 'ГД') {titleTest='ГОЛОС.ДЕТИ'}
   if (titleTest === 'Г') {titleTest='ГОЛОС'
-  idText='07GD'}
+  idText='07GD0'}
   if (titleTest === 'Г6') {titleTest='ГОЛОС.60+'}
   if (titleTest === 'ПГ') {titleTest='ПУСТЬ ГОВОРЯТ'
-  idText='19PG'}
+  idText='19PG0'}
   if (titleTest === 'БИ') {titleTest='БОЛЬШАЯ ИГРА'
-  idText='19BI'}
+  idText='19BI0'}
   if (titleTest === 'ДТ') {titleTest='ДОК-ТОК'
-  idText='19DT'}
+  idText='19DT0'}
   if (titleTest === 'НЗ') {titleTest='НЕПУТЕВЫЕ ЗАМЕТКИ'}
   if (titleTest === 'ИГ') {titleTest='ИГРАЙ ГАРМОНЬ, ЛЮБИМАЯ'}
   if (titleTest === 'Ч') {titleTest='ЧАСОВОЙ'}
   if (titleTest === 'ВВ') {titleTest='ВИДЕЛИ ВИДЕО'
-  idText='19VV'}
+  idText='19VV0'}
   if (titleTest === 'ТТ') {titleTest='ТОЧЬ-В-ТОЧЬ'
-  idText='07TT'}
+  idText='07TT0'}
   if (titleTest === 'СП') {titleTest='СЛОВО ПАСТЫРЯ'}
   if (titleTest === 'УУ') {titleTest='УМНИКИ И УМНИЦЫ'
-  idText='08UU'}
+  idText='08UU0'}
   if (titleTest === 'СВ') {titleTest='СЕГОДНЯ ВЕЧЕРОМ'
-  idText='19SV'}
+  idText='19SV0'}
   if (titleTest === 'ЛВ') {titleTest='ЛУЧШЕ ВСЕХ'
-  idText='08LV'}
+  idText='08LV0'}
   if (titleTest === '101') {titleTest='101 ВОПРОС ВЗРОСЛОМУ'}
   if (titleTest === 'П') {titleTest='ПОЗНЕР'}
   if (titleTest === 'ЖЗ') {titleTest='ЖИТЬ ЗДОРОВО'
-  idText='11JZ'}
+  idText='11JZ0'}
   if (titleTest === 'ЛП') {titleTest='ЛЕДНИКОВЫЙ ПЕРИОД'}
   if (titleTest === 'ПЧ') {titleTest='ПОЛЕ ЧУДЕС'
-  idText='08PC'}
+  idText='08PC0'}
   if (titleTest === 'ЯПЗ') {titleTest='Я ПОЧТИ ЗНАМЕНИТ'}
   if (titleTest === 'ТА') {titleTest='ТРИ АККОРДА'
-  idText='07TA'}
+  idText='07TA0'}
   if (titleTest === 'ЧИЗ') {titleTest='ЧЕЛОВЕК И ЗАКОН'
-  idText='03CZ'}
+  idText='03CZ0'}
   if (titleTest === 'НС') {titleTest='НОВОСТИ СПОРТА'}
   if (titleTest === 'Н') {titleTest='НОВОСТИ'}
   if (titleTest === 'НСД') {titleTest='НА САМОМ ДЕЛЕ'
-  idText='19SD'}
+  idText='19SD0'}
   if (titleTest === 'РПЛ') {titleTest='РАЗБОР ОЦЕНКИ ПЕРЕДАЧ С В.Лазуткиным'
   idText='XXX'}
   if (titleTest === 'РПБ') {titleTest='РАЗБОР ОЦЕНКИ ПЕРЕДАЧ С А.Бордаченковым'
@@ -503,7 +503,7 @@ document.querySelector("#contentTitle").addEventListener("change", function () {
   if (titleTest === '1') {titleTest='ВЫЗОВ В АЗП-1'}
   if (titleTest === 'АКП') {titleTest='РАБОТА В АКП'}
   if (titleTest === 'КХСМ') {titleTest='КТО ХОЧЕТ СТАТЬ МИЛЛИОНЕРОМ?'
-  idText='08KH'}
+  idText='08KH0'}
   
   document.querySelector("#contentTitle").value = titleTest;
   localStorage.contentTitle = titleTest;
