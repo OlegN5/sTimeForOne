@@ -266,7 +266,8 @@ document.getElementById("sname").addEventListener("change", function () {
 document.querySelector("#news").addEventListener("click", function () {
 
   alert("В названия передач можно забивать в большинстве случаев только первые буквы (пофиг на регистр) - будет работать автозамена");
-  alert(`ДП=ДАВАЙ ПОЖЕНИМСЯ
+  alert(`ДПИ=ДОКТОРА ПРОТИВ ИНТЕРНЕТА
+  ДП=ДАВАЙ ПОЖЕНИМСЯ
   МП=МОДНЫЙ ПРИГОВОР
   ВП=ВРЕМЯ ПОКАЖЕТ
   ЧГК=ЧТО? ГДЕ? КОГДА?
@@ -466,6 +467,8 @@ document.querySelector("#contentTitle").addEventListener("change", function () {
   idText='19BI0'}
   if (titleTest === 'ДТ') {titleTest='ДОК-ТОК'
   idText='19DT0'}
+  if (titleTest === 'ДПИ') {titleTest='ДОКТОРА ПРОТИВ ИНТЕРНЕТА'
+  idText='08DP00'}
   if (titleTest === 'НЗ') {titleTest='НЕПУТЕВЫЕ ЗАМЕТКИ'}
   if (titleTest === 'ИГ') {titleTest='ИГРАЙ ГАРМОНЬ, ЛЮБИМАЯ'}
   if (titleTest === 'Ч') {titleTest='ЧАСОВОЙ'}
