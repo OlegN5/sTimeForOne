@@ -279,7 +279,6 @@ document.querySelector("#news").addEventListener("click", function () {
   ЖД=ЖИЗНЬ ДРУГИХ
   ВУ=ВЕЧЕРНИЙ УРГАНТ
   З=ЗДОРОВЬЕ
-  ВПИ=ВРАЧИ ПРОТИВ ИНТЕРНЕТА
   А=АНОНСЫ
   С=СПЕЦПРОЕКТЫ
   ГД=ГОЛОС.ДЕТИ
@@ -454,7 +453,6 @@ document.querySelector("#contentTitle").addEventListener("change", function () {
   idText='08VU'}
   if (titleTest === 'З') {titleTest='ЗДОРОВЬЕ'
   idText='11ZD0'}
-  if (titleTest === 'ВПИ') {titleTest='ВРАЧИ ПРОТИВ ИНТЕРНЕТА'}
   if (titleTest === 'А') {titleTest='АНОНСЫ'}
   if (titleTest === 'С') {titleTest='СПЕЦПРОЕКТЫ'}
   if (titleTest === 'ГД') {titleTest='ГОЛОС.ДЕТИ'}
