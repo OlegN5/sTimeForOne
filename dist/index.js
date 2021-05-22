@@ -448,7 +448,8 @@ document.querySelector("#contentTitle").addEventListener("change", function () {
   if (titleTest === 'ТП') {titleTest='ТЕСТ ПРЕСЕТА'}
   if (titleTest === 'ЖЖ') {titleTest='ЖЕНСКИЙ ЖУРНАЛ'
   idText='15JJ'}
-  if (titleTest === 'ЖД') {titleTest='ЖИЗНЬ ДРУГИХ'}
+  if (titleTest === 'ЖД') {titleTest='ЖИЗНЬ ДРУГИХ'
+  idText='08JD0'}
   if (titleTest === 'ВУ') {titleTest='ВЕЧЕРНИЙ УРГАНТ'
   idText='08VU'}
   if (titleTest === 'З') {titleTest='ЗДОРОВЬЕ'
@@ -469,7 +470,8 @@ document.querySelector("#contentTitle").addEventListener("change", function () {
   idText='08DP00'}
   if (titleTest === 'НЗ') {titleTest='НЕПУТЕВЫЕ ЗАМЕТКИ'}
   if (titleTest === 'ИГ') {titleTest='ИГРАЙ ГАРМОНЬ, ЛЮБИМАЯ'}
-  if (titleTest === 'Ч') {titleTest='ЧАСОВОЙ'}
+  if (titleTest === 'Ч') {titleTest='ЧАСОВОЙ'
+  idText='03CA0'}
   if (titleTest === 'ВВ') {titleTest='ВИДЕЛИ ВИДЕО'
   idText='19VV0'}
   if (titleTest === 'ТТ') {titleTest='ТОЧЬ-В-ТОЧЬ'
