@@ -431,6 +431,8 @@ document.querySelector("#contentTitle").addEventListener("change", function () {
   idText = ''
   if (titleTest === 'ДП') {titleTest='ДАВАЙ ПОЖЕНИМСЯ'
   idText='19DP0'}
+  if (titleTest === 'СК') {titleTest='СВОЯ КОЛЕЯ'
+  idText='07SK0'}
   if (titleTest === 'АА') {titleTest='АБРАКАДАБРА'}
   if (titleTest === 'УМ') {titleTest='УГАДАЙ МЕЛОДИЮ'
   idText='08UM0'}
