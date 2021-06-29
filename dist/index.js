@@ -56,6 +56,7 @@ window.onload = function () {
     sbros ? contin() : notContin();
   }
 };
+
 function notContin() {
   localStorage.removeItem("timeStart");
   localStorage.removeItem("contentID");
@@ -322,7 +323,17 @@ document.querySelector("#news").addEventListener("click", function () {
 
 
 document.querySelector("#start").addEventListener("click", function () {
+
+  // if (localStorage.getItem("timeStart")) {
+  //   alert("Есть незавершенная работа! Сначала завершите работу в другой вкладке.")
+  //   return
+  // }
+
   myTimer.start();
+
+
+
+
   clearForm();
   inputInit();
 
