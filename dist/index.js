@@ -13,6 +13,25 @@ console.log("002");
 firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore();
 
+
+var chatid = "-1001476218810";
+var tokenTel = "5097081300:AAGaq_J8zZiImhfZIR1U9XjnJjvH_vKYiTI";
+var text = "Всем привет! <b>Я ваш бот</b> информатор!";
+
+// otpravka(tokenTel,text,chatid);
+
+function otpravka(tokenTel,text,chatid){
+  var z=$.ajax({  
+  type: "POST",  
+  url: "https://api.telegram.org/bot"+tokenTel+"/sendMessage?chat_id="+chatid,
+  data: "parse_mode=HTML&text="+encodeURIComponent(text), 
+  }); 
+ };
+
+
+
+
+
 console.log("003");
 class Timer {
   constructor() {
@@ -115,6 +134,7 @@ function contin() {
     document.getElementById("stop").disabled = false;
     document.getElementById("statButton").disabled = false;
   }
+
 }
 
 inputInit();
@@ -171,6 +191,9 @@ if (sessionStorage.data) {
       userData.timeStop
     )}. Сохранить?`
   );
+  otpravka(tokenTel, `Проверь! Вероятно данные не сохранились ${userData.name} ${userData.ID} ${userData.Title} ${userData.timeStart} - ${userData.timeStop}`, chatid);
+
+
   savedata ? save() : notSave();
 }
 console.log("008");
@@ -428,6 +451,10 @@ document.querySelector("#contentID").addEventListener("change", function () {
           alert(
             `АХТУНГ!!! ID:${idTest} есть в базе, смотрел ${my.name}, ${tStart}, брак: ${my.Brak}, комментарии: ${my.Commit}`
           );
+
+          otpravka(tokenTel, `${localStorage.myName} смотрит передачу <b> ${localStorage.contentID} ${localStorage.contentTitle} </b>, которую ранее смотрел ${my.name}, ${tStart}`, chatid);
+
+
           console.log(doc.id, " => ", doc.data());
         });
       })
@@ -612,7 +639,22 @@ document.querySelector("#stop").addEventListener("dblclick", function () {
   console.log("data", data);
   console.log("sessionStorage.data", userData);
   localStorage.removeItem("timeStart");
+  console.log("хронометраж", timeStop - timeStart);
+  durMin1 = ((timeStop - timeStart)/1000)/60
+
+
+  if (ID == '') {
+    ttt =`${localStorage.myName} добавил передачу ${Title} без ID`
+    otpravka(tokenTel, ttt, chatid);
+
+  }
+ 
+  if (durMin1 > 120 || durMin1 < 1)  {
+    ttt =`${localStorage.myName} добавил передачу ${ID} ${Title} хронометражем  ${durMin1} минут`
+    otpravka(tokenTel, ttt, chatid);
+  }
   recordToBasa(data);
+
 });
 
 function recordToBasa(data) {
@@ -625,6 +667,11 @@ function recordToBasa(data) {
       document.getElementById("postfactum").disabled = true;
       document.getElementById("start").disabled = false;
       document.getElementById("sname").disabled = false;
+      otpravka(tokenTel,'передача <b>' + localStorage.contentTitle + '</b> добавлена в базу',chatid);
+      
+
+
+
       sessionStorage.removeItem("data");
       localStorage.removeItem("timeStart");
       localStorage.removeItem("contentID");
