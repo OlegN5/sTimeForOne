@@ -352,6 +352,12 @@ document.querySelector("#start").addEventListener("click", function () {
   //   return
   // }
 
+  text = `${document.getElementById("sname").value}`
+
+  otpravka(tokenTel, text, chatid);
+
+
+
   myTimer.start();
 
 
@@ -408,6 +414,7 @@ document.getElementById("postfactum").addEventListener("click", function () {
 
     console.log("НОВАЯ ДАТА", enterData);
     // tttt
+    timeBylo = localStorage.getItem("timeStart")
 
     if (enterData == "Invalid Date") {
       const is = confirm(`Уверены: ${enterData}?`);
@@ -424,6 +431,10 @@ document.getElementById("postfactum").addEventListener("click", function () {
       document.getElementById("timeStart").textContent = localStorage.getItem(
         "timeStart"
       );
+      text = `${document.getElementById("sname").value} \n поменял время старта \n с ${timeBylo} \n на ${enterData} \n ${document.getElementById("contentID").value} \n ${document.getElementById("contentTitle").value} \n ОМАКСИ`
+      otpravka(tokenTel, text, chatid);
+
+
     }
   }
 });
@@ -650,9 +661,10 @@ document.querySelector("#stop").addEventListener("dblclick", function () {
   }
  
   if (durMin1 > 120 || durMin1 < 1)  {
-    ttt =`${localStorage.myName} добавил передачу ${ID} ${Title} хронометражем  ${durMin1} минут`
+    ttt =`${localStorage.myName} \n добавил передачу \n${ID} \n${Title} \n хр.: ${durMin1} минут`
     otpravka(tokenTel, ttt, chatid);
   }
+
   recordToBasa(data);
 
 });
@@ -667,11 +679,11 @@ function recordToBasa(data) {
       document.getElementById("postfactum").disabled = true;
       document.getElementById("start").disabled = false;
       document.getElementById("sname").disabled = false;
-      otpravka(tokenTel,'передача <b>' + localStorage.contentTitle + '</b> добавлена в базу',chatid);
+      otpravka(tokenTel,`${localStorage.myName} \n добавил передачу \n <b> ${localStorage.contentTitle} </b>`,chatid);
+      if (localStorage.getItem("commit") != '') {
+        otpravka(tokenTel,`с комментариями \n ${localStorage.getItem("commit")}`,chatid);
+      }
       
-
-
-
       sessionStorage.removeItem("data");
       localStorage.removeItem("timeStart");
       localStorage.removeItem("contentID");
