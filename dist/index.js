@@ -557,6 +557,23 @@ document.querySelector("#swFull").addEventListener("change", function () {
 
 document.querySelector("#stop").addEventListener("dblclick", function () {
   myTimer.stop();
+  ID = localStorage.contentID;
+  if (ID === " ") {
+    ID = "";
+  }
+  Title = localStorage.contentTitle;
+  if (Title === " ") {
+    Title = "";
+  }
+  if (ID === "" && Title === "") {
+    var str = new String(`ВНИМАНИЕ! НЕТ НИ НАЗВАНИЯ НИ ID. ЗАПИСАТЬ В БАЗУ НЕ МОГУ!!!`);
+    alert(str);
+    return
+  }
+  
+
+
+
   console.log("dblclick");
   document.querySelector("#stop").disabled = true;
   document.querySelector("#postfactum").disabled = true;
