@@ -289,58 +289,12 @@ document.getElementById("sname").addEventListener("change", function () {
 
 document.querySelector("#news").addEventListener("click", function () {
 
-  alert("В названия передач можно забивать в большинстве случаев только первые буквы (пофиг на регистр) - будет работать автозамена");
-  alert(`ДПИ=ДОКТОРА ПРОТИВ ИНТЕРНЕТА
-  ДП=ДАВАЙ ПОЖЕНИМСЯ
-  МП=МОДНЫЙ ПРИГОВОР
-  ВП=ВРЕМЯ ПОКАЖЕТ
-  ЧГК=ЧТО? ГДЕ? КОГДА?
-  МЖ=МУЖСКОЕ/ЖЕНСКОЕ
-  ДУ=ДОБРОЕ УТРО
-  ТИ=ТЕСТ ИНТЕЛЛИГЕЙН
-  ТП=ТЕСТ ПРЕСЕТА
-  ЖЖ=ЖЕНСКИЙ ЖУРНАЛ
-  ЖД=ЖИЗНЬ ДРУГИХ
-  ВУ=ВЕЧЕРНИЙ УРГАНТ
-  З=ЗДОРОВЬЕ
-  А=АНОНСЫ
-  С=СПЕЦПРОЕКТЫ
-  ГД=ГОЛОС.ДЕТИ
-  Г=ГОЛОС
-  Г6=ГОЛОС.60+
-  ПГ=ПУСТЬ ГОВОРЯТ
-  НСД=НА САМОМ ДЕЛЕ
-  БИ=БОЛЬШАЯ ИГРА
-  ДТ=ДОК-ТОК
-  НЗ=НЕПУТЕВЫЕ ЗАМЕТКИ
-  ИГ=ИГРАЙ ГАРМОНЬ, ЛЮБИМАЯ`);
-
-  alert(`Ч=ЧАСОВОЙ
-  ВВ=ВИДЕЛИ ВИДЕО
-  ТТ=ТОЧЬ-В-ТОЧЬ
-  СП=СЛОВО ПАСТЫРЯ
-  УУ=УМНИКИ И УМНИЦЫ
-  СВ=СЕГОДНЯ ВЕЧЕРОМ
-  ЛВ=ЛУЧШЕ ВСЕХ
-  101=101 ВОПРОС ВЗРОСЛОМУ
-  П=ПОЗНЕР
-  ЖЗ=ЖИТЬ ЗДОРОВО
-  ЛП=ЛЕДНИКОВЫЙ ПЕРИОД
-  ПЧ=ПОЛЕ ЧУДЕС
-  ЯПЗ=Я ПОЧТИ ЗНАМЕНИТ
-  ТА=ТРИ АККОРДА
-  ЧИЗ=ЧЕЛОВЕК И ЗАКОН
-  НС=НОВОСТИ СПОРТА
-  Н=НОВОСТИ)
-  КХСМ=КТО ХОЧЕТ СТАТЬ МИЛЛИОНЕРОМ?`);
+  
   alert(`РПЛ=РАЗБОР ОЦЕНКИ ПЕРЕДАЧ С В.Лазуткиным
   РПБ=РАЗБОР ОЦЕНКИ ПЕРЕДАЧ С А.Бордаченковым
   1=ВЫЗОВ В АЗП-1
   АКП=РАБОТА В АКП`);
 
-  alert("Не забывайте переключать свичер при полном отсмотре");
-  alert("Больше эфирных программ - меньше архива и повторного отсмотра");
-  alert("Эфир по возможности ПОЛНОСТЬЮ, все остальное как пойдет");
 })
 
 
@@ -352,7 +306,7 @@ document.querySelector("#start").addEventListener("click", function () {
   //   return
   // }
 
-  text = `${document.getElementById("sname").value}`
+  text = `<b>${document.getElementById("sname").value}</b>`
 
   otpravka(tokenTel, text, chatid);
 
@@ -431,7 +385,7 @@ document.getElementById("postfactum").addEventListener("click", function () {
       document.getElementById("timeStart").textContent = localStorage.getItem(
         "timeStart"
       );
-      text = `${document.getElementById("sname").value} \n поменял время старта \n с ${timeBylo} \n на ${enterData} \n ${document.getElementById("contentID").value} \n ${document.getElementById("contentTitle").value} \n ОМАКСИ`
+      text = `<b>${document.getElementById("sname").value}</b>\nпоменял время старта\nс ${timeBylo}\nна ${enterData}\n<b>${document.getElementById("contentID").value}\n${document.getElementById("contentTitle").value}<b>\nОМАКСИ`
       otpravka(tokenTel, text, chatid);
 
 
@@ -462,8 +416,8 @@ document.querySelector("#contentID").addEventListener("change", function () {
           alert(
             `АХТУНГ!!! ID:${idTest} есть в базе, смотрел ${my.name}, ${tStart}, брак: ${my.Brak}, комментарии: ${my.Commit}`
           );
-
-          otpravka(tokenTel, `${localStorage.myName} смотрит передачу <b> ${localStorage.contentID} ${localStorage.contentTitle} </b>, которую ранее смотрел ${my.name}, ${tStart}`, chatid);
+          text = `<b>${localStorage.myName}</b>\nсмотрит передачу\n<b>${localStorage.contentID}\n${localStorage.contentTitle}</b>\nранее смотрел\n<b>${my.name}\n${tStart}</b>`
+          otpravka(tokenTel, text, chatid);
 
 
           console.log(doc.id, " => ", doc.data());
@@ -478,11 +432,27 @@ document.querySelector("#contentTitle").addEventListener("change", function () {
   console.log(document.querySelector("#contentTitle").value);
   let titleTest = document.querySelector("#contentTitle").value.toUpperCase();
   idText = ''
+  if (titleTest === 'ДЗ') {titleTest='ДВЕ ЗВЕЗДЫ'
+  idText='07DZ0'}
+  if (titleTest === 'ДР') {titleTest='DANCE РЕВОЛЮЦИЯ'
+  idText='07DR0'}
+  if (titleTest === 'ДУ') {titleTest='ДОБРОЕ УТРО'}
+  if (titleTest === 'НСВ') {titleTest='НАЕДИНЕ СО ВСЕМИ'
+  idText='14NV0'}
+  if (titleTest === 'НД') {titleTest='НА ДАЧУ'
+  idText='14DN0'}
+  if (titleTest === 'Н') {titleTest='НОВОСТИ'}
+  if (titleTest === 'О') {titleTest='ОЛИМПИАДА'}
+  if (titleTest === 'Р') {titleTest='РЕКЛАМА'}
+  if (titleTest === 'ПК') {titleTest='ПРАЗДНИЧНЫЙ КОНЦЕРТ'
+  idText='07'}
+  if (titleTest === 'С') {titleTest='ПРИЕМКА СИГНАЛА'}
   if (titleTest === 'ДП') {titleTest='ДАВАЙ ПОЖЕНИМСЯ'
   idText='19DP0'}
   if (titleTest === 'СК') {titleTest='СВОЯ КОЛЕЯ'
   idText='07SK0'}
-  if (titleTest === 'АА') {titleTest='АБРАКАДАБРА'}
+  if (titleTest === 'АА') {titleTest='АБРАКАДАБРА'
+  idText='14'}
   if (titleTest === 'УМ') {titleTest='УГАДАЙ МЕЛОДИЮ'
   idText='08UM0'}
   if (titleTest === 'МП') {titleTest='МОДНЫЙ ПРИГОВОР'
@@ -491,7 +461,8 @@ document.querySelector("#contentTitle").addEventListener("change", function () {
   idText='14VP'}
   if (titleTest === '?') {titleTest='ЧТО? ГДЕ? КОГДА?'
   idText='08GK0'}
-  if (titleTest === 'ЧГК') {titleTest='ЧТО? ГДЕ? КОГДА?'}
+  if (titleTest === 'ЧГК') {titleTest='ЧТО? ГДЕ? КОГДА?'  
+  idText='08GK0'}
   if (titleTest === 'МЖ') {titleTest='МУЖСКОЕ/ЖЕНСКОЕ'
   idText='14MJ'}
   if (titleTest === 'ДУ') {titleTest='ДОБРОЕ УТРО'}
@@ -545,7 +516,7 @@ document.querySelector("#contentTitle").addEventListener("change", function () {
   if (titleTest === 'ТА') {titleTest='ТРИ АККОРДА'
   idText='07TA0'}
   if (titleTest === 'ЧИЗ') {titleTest='ЧЕЛОВЕК И ЗАКОН'
-  idText='03CZ0'}
+  idText='03CZ'}
   if (titleTest === 'НС') {titleTest='НОВОСТИ СПОРТА'}
   if (titleTest === 'Н') {titleTest='НОВОСТИ'}
   if (titleTest === 'НСД') {titleTest='НА САМОМ ДЕЛЕ'
@@ -655,13 +626,18 @@ document.querySelector("#stop").addEventListener("dblclick", function () {
 
 
   if (ID == '') {
-    ttt =`${localStorage.myName} добавил передачу ${Title} без ID`
+    ttt =`<b>${localStorage.myName}</b>\nдобавил передачу\n<b>${Title}\nбез ID</b>`
+    otpravka(tokenTel, ttt, chatid);
+
+  }
+  if (Title == '') {
+    ttt =`<b>${localStorage.myName}</b>\nдобавил передачу\n<b>без названия</b>`
     otpravka(tokenTel, ttt, chatid);
 
   }
  
   if (durMin1 > 120 || durMin1 < 1)  {
-    ttt =`${localStorage.myName} \n добавил передачу \n${ID} \n${Title} \n хр.: ${durMin1} минут`
+    ttt =`<b>${localStorage.myName}</b>\nдобавил передачу\n${ID}\n<b>${Title}</b>\nхр.: ${Math.floor(durMin1)} минут`
     otpravka(tokenTel, ttt, chatid);
   }
 
@@ -679,9 +655,11 @@ function recordToBasa(data) {
       document.getElementById("postfactum").disabled = true;
       document.getElementById("start").disabled = false;
       document.getElementById("sname").disabled = false;
-      otpravka(tokenTel,`${localStorage.myName} \n добавил передачу \n <b> ${localStorage.contentTitle} </b>`,chatid);
-      if (localStorage.getItem("commit") != '') {
-        otpravka(tokenTel,`с комментариями \n ${localStorage.getItem("commit")}`,chatid);
+      
+      if (localStorage.getItem("commit") != ' ') {
+        otpravka(tokenTel,`<b>${localStorage.myName}</b>\nдобавил передачу \n<b>${localStorage.contentTitle} </b> \nс комментариями:\n<i>'${localStorage.getItem("commit")}'</i>`,chatid);
+      } else {
+        otpravka(tokenTel,`<b>${localStorage.myName}</b>\nдобавил передачу \n<b>${localStorage.contentID}\n${localStorage.contentTitle}</b>`,chatid);
       }
       
       sessionStorage.removeItem("data");
@@ -845,7 +823,7 @@ document.querySelector("#statButton").addEventListener("dblclick", function () {
 //     });
 
 function selectCollectionInBase() {
-  document.URL == "http://localhost:5000/"
+  document.URL == "http://127.0.0.1:8000/"
     ? (collection = "test")
     : (collection = "users");
 
