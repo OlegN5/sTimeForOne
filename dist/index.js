@@ -55,7 +55,7 @@ class Timer {
   }
 }
 
-console.log("004");
+// console.log("004");
 // let sname
 // let ID
 // let Title
@@ -64,7 +64,7 @@ console.log("004");
 // let Full =''
 
 const myTimer = new Timer();
-console.log("005");
+// console.log("005");
 window.onload = function () {
   if (localStorage.timeStart) {
     console.log("в онлоад");
@@ -110,7 +110,7 @@ function notContin() {
 }
 
 function contin() {
-  console.log("contin");
+  // console.log("contin");
   myTimer.start();
   document.getElementById("timeStart").textContent = localStorage.timeStart;
 
@@ -139,7 +139,7 @@ function contin() {
 
 inputInit();
 
-console.log("006");
+// console.log("006");
 function inputInit() {
   if (localStorage.contentID) {
     document.querySelector("#contentID").value = localStorage.contentID.trim();
@@ -171,19 +171,19 @@ function inputInit() {
     document.querySelector("#swFull").checked = Boolean(
       Number(localStorage.swFull)
     );
-    console.log("swFull, local если определена", localStorage.swFull);
+    // console.log("swFull, local если определена", localStorage.swFull);
   } else {
     localStorage.swFull = 0;
-    console.log("swFull, local если не определена", localStorage.swFull);
+    // console.log("swFull, local если не определена", localStorage.swFull);
   }
 }
 
-console.log("007");
+// console.log("007");
 if (sessionStorage.data) {
   //myData = sessionStorage.data
   let userData = JSON.parse(sessionStorage.data);
-  console.log("userData", userData);
-  console.log("в выборе сохранять?");
+  // console.log("userData", userData);
+  // console.log("в выборе сохранять?");
   let savedata = confirm(
     `Есть несохраненные данные: ${userData.name}, ${userData.ID}, ${
       userData.Title
@@ -196,14 +196,14 @@ if (sessionStorage.data) {
 
   savedata ? save() : notSave();
 }
-console.log("008");
+// console.log("008");
 
-console.log("009");
+// console.log("009");
 function save() {
   alert("сохраняю");
-  console.log("sessionStorage.data on save", sessionStorage.data);
+  // console.log("sessionStorage.data on save", sessionStorage.data);
   let userData = JSON.parse(sessionStorage.data);
-  console.log("userData on save", userData);
+  // console.log("userData on save", userData);
   const data = {
     name: userData.name,
     dataAdded: new Date(userData.dataAdded),
@@ -218,8 +218,8 @@ function save() {
     addFrom: userData.addFrom,
     version: userData.version,
   };
-  console.log("data on save", data);
-  console.log("в сохранении даты");
+  // console.log("data on save", data);
+  // console.log("в сохранении даты");
   recordToBasa(data);
 }
 
@@ -241,8 +241,8 @@ function notSave() {
 }
 
 //если з-р не выбран - все заблокировать
-console.log("кто");
-console.log(document.getElementById("sname").value);
+// console.log("кто");
+// console.log(document.getElementById("sname").value);
 
 if (document.getElementById("sname").value === "Кто сегодня звукорежиссер?") {
   console.log("Кто с з/р?");
@@ -290,10 +290,7 @@ document.getElementById("sname").addEventListener("change", function () {
 document.querySelector("#news").addEventListener("click", function () {
 
   
-  alert(`РПЛ=РАЗБОР ОЦЕНКИ ПЕРЕДАЧ С В.Лазуткиным
-  РПБ=РАЗБОР ОЦЕНКИ ПЕРЕДАЧ С А.Бордаченковым
-  1=ВЫЗОВ В АЗП-1
-  АКП=РАБОТА В АКП`);
+  alert(`добавлены сокращения, бот телеграм, защита от пустых записей`);
 
 })
 
@@ -674,9 +671,9 @@ function recordToBasa(data) {
       document.getElementById("sname").disabled = false;
       
       if (localStorage.getItem("commit") != ' ') {
-        otpravka(tokenTel,`<b>${localStorage.myName}</b>\nдобавил передачу \n<b>${localStorage.contentTitle} </b> \nс комментариями:\n<i>'${localStorage.getItem("commit")}'</i>`,chatid);
+        otpravka(tokenTel,`<b>${localStorage.myName}</b>\nдобавил передачу\n<b>${localStorage.contentTitle}</b>\nс комментариями:\n<i>'${localStorage.getItem("commit")}'</i>`, chatid);
       } else {
-        otpravka(tokenTel,`<b>${localStorage.myName}</b>\nдобавил передачу \n<b>${localStorage.contentID}\n${localStorage.contentTitle}</b>`,chatid);
+        otpravka(tokenTel,`<b>${localStorage.myName}</b>\nдобавил передачу\n<b>${localStorage.contentID}\n${localStorage.contentTitle}</b>`, chatid);
       }
       
       sessionStorage.removeItem("data");
@@ -758,8 +755,8 @@ document.querySelector("#statButton").addEventListener("click", function () {
         } else if (my.name === "Сергей Неретин") {
           durSn += duration;
         }
-        console.log("my", my.name);
-        console.log("tStart", tStart.seconds);
+        // console.log("my", my.name);
+        // console.log("tStart", tStart.seconds);
 
         //my.name
       });
@@ -815,7 +812,7 @@ document.querySelector("#statButton").addEventListener("click", function () {
       console.log("Error getting documents: ", error);
     });
 
-  console.log("statistic");
+  // console.log("statistic");
   document.getElementById("statButton").disabled = false;
 });
 
@@ -840,12 +837,12 @@ document.querySelector("#statButton").addEventListener("dblclick", function () {
 //     });
 
 function selectCollectionInBase() {
-  document.URL == "http://127.0.0.1:8000/"
+  document.URL == "http://localhost:8000/"
     ? (collection = "test")
     : (collection = "users");
 
-  console.log(document.URL);
-  console.log("firebase", collection);
+  // console.log(document.URL);
+  // console.log("firebase", collection);
   return collection;
 }
 
