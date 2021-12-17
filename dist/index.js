@@ -443,7 +443,7 @@ document.querySelector("#contentTitle").addEventListener("change", function () {
   if (titleTest === 'Р') {titleTest='РЕКЛАМА'}
   if (titleTest === 'ПК') {titleTest='ПРАЗДНИЧНЫЙ КОНЦЕРТ'
   idText='07'}
-  if (titleTest === 'С') {titleTest='ПРИЕМКА СИГНАЛА'}
+  if (titleTest === 'ПС') {titleTest='ПРИЕМКА СИГНАЛА'}
   if (titleTest === 'ДП') {titleTest='ДАВАЙ ПОЖЕНИМСЯ'
   idText='19DP0'}
   if (titleTest === 'СК') {titleTest='СВОЯ КОЛЕЯ'
