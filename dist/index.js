@@ -443,7 +443,7 @@ document.querySelector("#contentTitle").addEventListener("change", function () {
   if (titleTest === 'Р') {titleTest='РЕКЛАМА'}
   if (titleTest === 'ПК') {titleTest='ПРАЗДНИЧНЫЙ КОНЦЕРТ'
   idText='07'}
-  if (titleTest === 'С') {titleTest='ПРИЕМКА СИГНАЛА'}
+  if (titleTest === 'ПС') {titleTest='ПРИЕМКА СИГНАЛА'}
   if (titleTest === 'ДП') {titleTest='ДАВАЙ ПОЖЕНИМСЯ'
   idText='19DP0'}
   if (titleTest === 'СК') {titleTest='СВОЯ КОЛЕЯ'
@@ -453,7 +453,7 @@ document.querySelector("#contentTitle").addEventListener("change", function () {
   if (titleTest === 'УМ') {titleTest='УГАДАЙ МЕЛОДИЮ'
   idText='08UM0'}
   if (titleTest === 'МП') {titleTest='МОДНЫЙ ПРИГОВОР'
-  idText='19MP0'}
+  idText='19MP1'}
   if (titleTest === 'ВП') {titleTest='ВРЕМЯ ПОКАЖЕТ'
   idText='14VP'}
   if (titleTest === '?') {titleTest='ЧТО? ГДЕ? КОГДА?'
@@ -474,7 +474,7 @@ document.querySelector("#contentTitle").addEventListener("change", function () {
   if (titleTest === 'З') {titleTest='ЗДОРОВЬЕ'
   idText='11ZD0'}
   if (titleTest === 'А') {titleTest='АНОНСЫ'}
-  if (titleTest === 'С') {titleTest='СПЕЦПРОЕКТЫ'}
+  if (titleTest === 'СП') {titleTest='СПЕЦПРОЕКТЫ'}
   if (titleTest === 'ГД') {titleTest='ГОЛОС.ДЕТИ'}
   if (titleTest === 'Г') {titleTest='ГОЛОС'
   idText='07GD0'}
