@@ -382,9 +382,8 @@ document.getElementById("postfactum").addEventListener("click", function () {
       document.getElementById("timeStart").textContent = localStorage.getItem(
         "timeStart"
       );
-      text = `<b>${document.getElementById("sname").value}</b>\nпоменял время старта\nс ${timeBylo}\nна ${enterData}\n<b>${document.getElementById("contentID").value}\n${document.getElementById("contentTitle").value}<b>\nОМАКСИ`
+      text = `<b>${document.getElementById("sname").value}</b>\nпоменял время старта\nс ${timeBylo}\nна ${enterData}\n<b>${document.getElementById("contentID").value}\n${document.getElementById("contentTitle").value}</b>\nОМАКСИ`
       otpravka(tokenTel, text, chatid);
-
 
     }
   }
