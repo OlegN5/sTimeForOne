@@ -473,7 +473,7 @@ document.querySelector("#contentTitle").addEventListener("change", function () {
   if (titleTest === 'З') {titleTest='ЗДОРОВЬЕ'
   idText='11ZD0'}
   if (titleTest === 'А') {titleTest='АНОНСЫ'}
-  if (titleTest === 'СП') {titleTest='СПЕЦПРОЕКТЫ'}
+  if (titleTest === 'С') {titleTest='СПЕЦПРОЕКТЫ'}
   if (titleTest === 'ГД') {titleTest='ГОЛОС.ДЕТИ'}
   if (titleTest === 'Г') {titleTest='ГОЛОС'
   idText='07GD0'}
