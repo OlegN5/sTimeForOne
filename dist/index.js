@@ -431,6 +431,10 @@ document.querySelector("#contentTitle").addEventListener("change", function () {
   idText = ''
   if (titleTest === 'ДЗ') {titleTest='ДВЕ ЗВЕЗДЫ'
   idText='07DZ0'}
+  if (titleTest === 'АФ') {titleTest='АНТИФЕЙК'
+  idText='19AN00'}
+  if (titleTest === 'УМ') {titleTest='УСТНЫЕ МЕМУАРЫ'
+  idText='14UM0'}
   if (titleTest === 'ДР') {titleTest='DANCE РЕВОЛЮЦИЯ'
   idText='07DR0'}
   if (titleTest === 'ДУ') {titleTest='ДОБРОЕ УТРО'}
