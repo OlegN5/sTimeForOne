@@ -67,6 +67,11 @@ const myTimer = new Timer();
 // console.log("005");
 window.onload = function () {
   if (localStorage.timeStart) {
+    if (Math.floor((new Date()-new Date(localStorage.timeStart))/1000/60) > 480) {
+      notContin()
+      return
+    }
+
     console.log("в онлоад");
     let sbros = confirm(
       `Продолжить? (если 'отменить', то данные сбросятся...)`
@@ -430,11 +435,15 @@ document.querySelector("#contentTitle").addEventListener("change", function () {
   idText = ''
   if (titleTest === 'ДЗ') {titleTest='ДВЕ ЗВЕЗДЫ'
   idText='07DZ0'}
+  if (titleTest === 'АФ') {titleTest='АНТИФЕЙК'
+  idText='19AN0'}
   if (titleTest === 'ДР') {titleTest='DANCE РЕВОЛЮЦИЯ'
   idText='07DR0'}
   if (titleTest === 'ДУ') {titleTest='ДОБРОЕ УТРО'}
   if (titleTest === 'НСВ') {titleTest='НАЕДИНЕ СО ВСЕМИ'
   idText='14NV0'}
+  if (titleTest === 'ННГ') {titleTest='НА НОЧЬ ГЛЯДЯ'
+  idText='08NG0'}
   if (titleTest === 'НД') {titleTest='НА ДАЧУ'
   idText='14DN0'}
   if (titleTest === 'Н') {titleTest='НОВОСТИ'}
@@ -552,6 +561,27 @@ document.querySelector("#swFull").addEventListener("change", function () {
 });
 
 document.querySelector("#stop").addEventListener("dblclick", function () {
+  console.log('DATe!', new Date().getDate())
+  
+  if (Math.floor((new Date()-new Date(localStorage.timeStart))/1000/60) > 300 
+  && new Date().getDate() != new Date(localStorage.timeStart).getDate()) {
+    // console.log(timeStop.getUTCDate(),timeStart.getUTCDate(),Math.floor(durMin1),'!!!!!!!!!' )
+    var str = new String(`ВНИМАНИЕ! Хронометраж передачи слишком большой. Запись в базу производиться не будет. Поменяйте системное время на "правильное" и сохраните еще раз. СПАСИБО!`);
+    alert(str);
+    return
+  }
+
+  if (new Date()-new Date(localStorage.timeStart)<0) {
+    // console.log(timeStop.getUTCDate(),timeStart.getUTCDate(),Math.floor(durMin1),'!!!!!!!!!' )
+    var str = new String(`ВНИМАНИЕ! Не сохранится!!! Дата начала позже даты конца... Исправь!`);
+    alert(str);
+    return
+  }
+
+
+
+  
+  
   myTimer.stop();
   ID = localStorage.contentID;
   if (ID === " ") {
@@ -566,6 +596,7 @@ document.querySelector("#stop").addEventListener("dblclick", function () {
     alert(str);
     return
   }
+  
   
 
 
@@ -604,6 +635,14 @@ document.querySelector("#stop").addEventListener("dblclick", function () {
   const addFrom = "sTimeForOne";
   let version = document.getElementById("version").textContent;
 
+
+
+  
+
+
+
+
+
   console.log("лог финальной записи в базу");
   console.log("timeStart: ", timeStart);
   console.log("timeStop: ", timeStop);
@@ -636,6 +675,11 @@ document.querySelector("#stop").addEventListener("dblclick", function () {
   localStorage.removeItem("timeStart");
   console.log("хронометраж", timeStop - timeStart);
   durMin1 = ((timeStop - timeStart)/1000)/60
+  console.log(Math.floor(durMin1),'durmin')
+ 
+
+
+
 
 
   if (ID == '') {
