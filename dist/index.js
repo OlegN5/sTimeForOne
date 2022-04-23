@@ -69,6 +69,7 @@ window.onload = function () {
   if (localStorage.timeStart) {
     if (Math.floor((new Date()-new Date(localStorage.timeStart))/1000/60) > 480) {
       notContin()
+      otpravka(tokenTel, `Данные сбросились по истечению 8 часов. ${localStorage.myName}\n ${localStorage.contentID}\n ${localStorage.contentTitle}\n старт: ${localStorage.timeStart}`, chatid);
       return
     }
 
@@ -568,6 +569,9 @@ document.querySelector("#stop").addEventListener("dblclick", function () {
     // console.log(timeStop.getUTCDate(),timeStart.getUTCDate(),Math.floor(durMin1),'!!!!!!!!!' )
     var str = new String(`ВНИМАНИЕ! Хронометраж передачи слишком большой. Запись в базу производиться не будет. Поменяйте системное время на "правильное" и сохраните еще раз. СПАСИБО!`);
     alert(str);
+    otpravka(tokenTel, `Слишком большой хронометраж - отказ записи\n ${localStorage.myName}\n ${localStorage.contentID}\n ${localStorage.contentTitle}\n старт: ${localStorage.timeStart}\n хрон: ${Math.floor((new Date()-new Date(localStorage.timeStart))/1000/60)}`, chatid);
+
+
     return
   }
 
@@ -575,6 +579,7 @@ document.querySelector("#stop").addEventListener("dblclick", function () {
     // console.log(timeStop.getUTCDate(),timeStart.getUTCDate(),Math.floor(durMin1),'!!!!!!!!!' )
     var str = new String(`ВНИМАНИЕ! Не сохранится!!! Дата начала позже даты конца... Исправь!`);
     alert(str);
+    otpravka(tokenTel, `Дата начала позже даты конца... - отказ в записи\n ${localStorage.myName}\n ${localStorage.contentID}\n ${localStorage.contentTitle}\n старт: ${localStorage.timeStart}\n хрон: ${Math.floor((new Date()-new Date(localStorage.timeStart))/1000/60)}`, chatid)
     return
   }
 
@@ -594,6 +599,7 @@ document.querySelector("#stop").addEventListener("dblclick", function () {
   if (ID === "" && Title === "") {
     var str = new String(`ВНИМАНИЕ! НЕТ НИ НАЗВАНИЯ НИ ID. ЗАПИСАТЬ В БАЗУ НЕ МОГУ!!!`);
     alert(str);
+    otpravka(tokenTel, `НЕТ НИ НАЗВАНИЯ НИ ID. ЗАПИСАТЬ В БАЗУ НЕ МОГУ!!!\n ${localStorage.myName}\n старт: ${localStorage.timeStart}\n хрон: ${Math.floor((new Date()-new Date(localStorage.timeStart))/1000/60)}`, chatid)
     return
   }
   
