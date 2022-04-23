@@ -68,8 +68,9 @@ const myTimer = new Timer();
 window.onload = function () {
   if (localStorage.timeStart) {
     if (Math.floor((new Date()-new Date(localStorage.timeStart))/1000/60) > 480) {
-      notContin()
       otpravka(tokenTel, `Данные сбросились по истечению 8 часов. ${localStorage.myName}\n ${localStorage.contentID}\n ${localStorage.contentTitle}\n старт: ${localStorage.timeStart}`, chatid);
+      notContin()
+      
       return
     }
 
